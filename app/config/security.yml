@@ -18,7 +18,19 @@ security:
             security: false
 
         default:
+            pattern:  ^/
             anonymous: ~
+            provider: main
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+            logout:
+                path:   /logout
+                target: /
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/login,      roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register,   roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin,      roles: ROLE_ADMIN }
+        # to można usunąć gdy się chce by każdy mógł chodzić po stronie:
+        - { path: ^/,           roles: ROLE_USER }
