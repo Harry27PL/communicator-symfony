@@ -51,4 +51,129 @@ class Call
     protected $endedAt;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set calledAt
+     *
+     * @param \DateTime $calledAt
+     * @return Call
+     */
+    public function setCalledAt($calledAt)
+    {
+        $this->calledAt = $calledAt;
+
+        return $this;
+    }
+
+    /**
+     * Get calledAt
+     *
+     * @return \DateTime 
+     */
+    public function getCalledAt()
+    {
+        return $this->calledAt;
+    }
+
+    /**
+     * Set endedAt
+     *
+     * @param \DateTime $endedAt
+     * @return Call
+     */
+    public function setEndedAt($endedAt)
+    {
+        $this->endedAt = $endedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get endedAt
+     *
+     * @return \DateTime 
+     */
+    public function getEndedAt()
+    {
+        return $this->endedAt;
+    }
+
+    /**
+     * Set channel
+     *
+     * @param \Entity\Channel $channel
+     * @return Call
+     */
+    public function setChannel(\Entity\Channel $channel = null)
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Get channel
+     *
+     * @return \Entity\Channel 
+     */
+    public function getChannel()
+    {
+        return $this->channel;
+    }
+
+    /**
+     * Set caller
+     *
+     * @param \Entity\User $caller
+     * @return Call
+     */
+    public function setCaller(\Entity\User $caller = null)
+    {
+        $this->caller = $caller;
+
+        return $this;
+    }
+
+    /**
+     * Get caller
+     *
+     * @return \Entity\User 
+     */
+    public function getCaller()
+    {
+        return $this->caller;
+    }
+
+    /**
+     * Set receiver
+     *
+     * @param \Entity\User $receiver
+     * @return Call
+     */
+    public function setReceiver(\Entity\User $receiver = null)
+    {
+        $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    /**
+     * Get receiver
+     *
+     * @return \Entity\User 
+     */
+    public function getReceiver()
+    {
+        return $this->receiver;
+    }
 }
