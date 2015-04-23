@@ -51,3 +51,8 @@ h2 {
 form {
     margin: 40px auto 100px;
 }
+
+.links {
+    margin: 15px 0px 0px;
+    text-align: center;
+}

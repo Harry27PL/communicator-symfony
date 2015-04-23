@@ -117,7 +117,7 @@ class User implements AdvancedUserInterface
      */
     public function getSalt()
     {
-        return $this->id*27;
+        return '';
     }
 
     /**
@@ -143,7 +143,7 @@ class User implements AdvancedUserInterface
      */
     public function isAccountNonExpired()
     {
-        return !$this->removedAt();
+        return !$this->removedAt;
     }
 
     /**
@@ -167,7 +167,7 @@ class User implements AdvancedUserInterface
      */
     public function isEnabled()
     {
-        return !$this->getUnpaid();
+        return true;
     }
 
     /**

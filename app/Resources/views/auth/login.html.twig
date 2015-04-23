@@ -3,23 +3,31 @@
 {% block body %}
 
     <h2>
-        Logowanie
+        {{ 'login.title'|trans }}
     </h2>
 
-    <form method="post">
+    <form method="post" action="{{ path('login_check') }}">
 
-        <div class="alert alert-danger hidden"></div>
+        {% if error|length %}
+            <div class="alert alert-danger">{{ error|trans }}</div>
+        {% endif %}
 
         <div class="form-group">
-            <input name="login" type="text" class="form-control input-lg" placeholder="e-mail lub nazwa uĹĽytkownika">
+            <input name="_login" type="text" class="form-control input-lg" placeholder="{{ 'login.username'|trans }}">
         </div>
 
         <div class="form-group">
-            <input name="password" type="password" class="form-control input-lg" placeholder="hasĹ‚o">
+            <input name="_password" type="password" class="form-control input-lg" placeholder="{{ 'login.password'|trans }}">
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-lg">Zaloguj się</button>
+            <button type="submit" class="btn btn-primary btn-lg">
+                {{ 'login.button'|trans }}
+            </button>
+        </div>
+
+        <div class="links">
+            <a href="{{ path('register') }}">{{ 'register.title'|trans }}</a>
         </div>
     </form>
 

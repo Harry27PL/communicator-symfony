@@ -62,7 +62,7 @@ class Channel
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $removedAt = false;
+    protected $removedAt;
 
     /**
      * Constructor
@@ -77,7 +77,7 @@ class Channel
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -100,7 +100,7 @@ class Channel
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -123,7 +123,7 @@ class Channel
     /**
      * Get isPublic
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPublic()
     {
@@ -146,7 +146,7 @@ class Channel
     /**
      * Get removedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRemovedAt()
     {
@@ -179,7 +179,7 @@ class Channel
     /**
      * Get members
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMembers()
     {
@@ -202,7 +202,7 @@ class Channel
     /**
      * Get creator
      *
-     * @return \Entity\User 
+     * @return \Entity\User
      */
     public function getCreator()
     {
@@ -235,7 +235,7 @@ class Channel
     /**
      * Get messages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMessages()
     {
@@ -268,7 +268,7 @@ class Channel
     /**
      * Get calls
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCalls()
     {

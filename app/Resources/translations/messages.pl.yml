@@ -19,3 +19,10 @@ register:
     username: nazwa użytkownika
     password: hasło
     button: Zarejestruj się
+
+login:
+    title: Logowanie
+    username: nazwa użytkownika
+    password: hasło
+    button: Zaloguj się
+    error: Nieprawidłowe dane logowania
