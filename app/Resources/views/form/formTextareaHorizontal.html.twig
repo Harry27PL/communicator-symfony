@@ -1,0 +1,7 @@
+<div class="form-group {{ class }} {% if error %}has-error{% endif %}">
+    <label for="{{ name }}" class="{{ classLeft }} control-label">{{ label }}</label>
+    <div class="{{ classRight }}">
+        <textarea class="form-control" id="{{ name }}" name="{{ name }}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{ placeholder  }}">{{ value }}</textarea>
+        {% if error %}<p class="help-block">{{ error }}</p>{% endif %}
+    </div>
+</div>

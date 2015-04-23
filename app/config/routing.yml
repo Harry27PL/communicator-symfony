@@ -1,17 +1,16 @@
 login:
-    path:     /login/{language}
-    defaults: {_controller: AppBundle:Main/Login:index, language: "" }
+    path:     /login
+    defaults: {_controller: AppBundle:Auth/Login:index }
 
 login_check:
     path: /login_check
 
 logout:
-    path:     /logout/{language}
-    defaults: {_controller: AppBundle:Main/Login:logout }
+    path:     /logout
 
 register:
-    path:     /register/{language}
-    defaults: {_controller: AppBundle:Main/Register:index, language: "" }
+    path:     /register
+    defaults: {_controller: AppBundle:Auth/Register:index }
 
 
 example:

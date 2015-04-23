@@ -79,7 +79,7 @@ class User implements AdvancedUserInterface
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $removedAt = false;
+    protected $removedAt;
 
     /**
      * @var boolean
@@ -186,7 +186,7 @@ class User implements AdvancedUserInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -222,7 +222,7 @@ class User implements AdvancedUserInterface
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -258,7 +258,7 @@ class User implements AdvancedUserInterface
     /**
      * Get removedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRemovedAt()
     {
@@ -281,7 +281,7 @@ class User implements AdvancedUserInterface
     /**
      * Get hasAvatar
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasAvatar()
     {
@@ -304,7 +304,7 @@ class User implements AdvancedUserInterface
     /**
      * Get isAdmin
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsAdmin()
     {
@@ -337,7 +337,7 @@ class User implements AdvancedUserInterface
     /**
      * Get connectedChannels
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getConnectedChannels()
     {
@@ -370,7 +370,7 @@ class User implements AdvancedUserInterface
     /**
      * Get createdChannels
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCreatedChannels()
     {
@@ -403,7 +403,7 @@ class User implements AdvancedUserInterface
     /**
      * Get messagesSent
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMessagesSent()
     {
@@ -436,7 +436,7 @@ class User implements AdvancedUserInterface
     /**
      * Get messagesReceived
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMessagesReceived()
     {
@@ -469,7 +469,7 @@ class User implements AdvancedUserInterface
     /**
      * Get outgoingCalls
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getOutgoingCalls()
     {
@@ -502,7 +502,7 @@ class User implements AdvancedUserInterface
     /**
      * Get incomingCalls
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIncomingCalls()
     {

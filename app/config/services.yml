@@ -1,9 +1,30 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
-parameters:
-#    parameter_name: value
-
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    em:
+        alias:      doctrine.orm.entity_manager
+
+    ##
+
+    user.repository:
+        class:      Repository\UserRepository
+        arguments:  [@em, @security.encoder_factory]
+
+    user.register:
+        class:      Service\User\UserRegister
+        arguments:  [@user.repository, @user.logAs]
+
+    user.logAs:
+        class:      Service\User\UserLogAs
+        arguments:  [@session, @security.context]
+
+    ##
+
+    date.twig.extension:
+        class:        TwigExtensions\Date
+        arguments:    [@translator]
+        tags:
+            -  { name: twig.extension }
+
+    form.twig.extension:
+        class:        TwigExtensions\Form
+        tags:
+            -  { name: twig.extension }

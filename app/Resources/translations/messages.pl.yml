@@ -1,0 +1,21 @@
+current: pl
+
+logo: Komunikator
+
+user:
+    validate:
+        email:
+            incorrect: podany adres jest nieprawidłowy
+            exists: podany adres już istnieje
+        username:
+            incorrect: podana nazwa jest nieprawidłowa
+            exists: podana nazwa już istnieje
+        password:
+            incorrect: należy podać hasło
+
+register:
+    title: Rejestracja
+    email: adres e-mail
+    username: nazwa użytkownika
+    password: hasło
+    button: Zarejestruj się
