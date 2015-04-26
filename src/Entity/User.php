@@ -75,6 +75,13 @@ class User implements AdvancedUserInterface
     protected $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=16)
+     */
+    protected $fayeToken;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
@@ -507,5 +514,28 @@ class User implements AdvancedUserInterface
     public function getIncomingCalls()
     {
         return $this->incomingCalls;
+    }
+
+    /**
+     * Set fayeToken
+     *
+     * @param string $fayeToken
+     * @return User
+     */
+    public function setFayeToken($fayeToken)
+    {
+        $this->fayeToken = $fayeToken;
+
+        return $this;
+    }
+
+    /**
+     * Get fayeToken
+     *
+     * @return string 
+     */
+    public function getFayeToken()
+    {
+        return $this->fayeToken;
     }
 }

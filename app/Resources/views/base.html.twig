@@ -18,6 +18,15 @@
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/bower_components/sip.js/dist/sip.min.js"></script>
         <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/faye/include.min.js"></script>
+        <script>
+            fayeConfig = {
+                id:     '{{ app.user.id }}',
+                token:  '{{ app.user.fayeToken }}',
+            };
+        </script>
+
+        <script src="/js/main.js"></script>
 
     </head>
 

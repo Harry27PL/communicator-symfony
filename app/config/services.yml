@@ -18,6 +18,12 @@ services:
 
     ##
 
+    faye:
+        class:      Service\Faye\Faye
+        arguments:  [@user.repository]
+
+    ##
+
     date.twig.extension:
         class:        TwigExtensions\Date
         arguments:    [@translator]

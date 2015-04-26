@@ -16,3 +16,7 @@ register:
 main:
     path:      /
     defaults:  { _controller: AppBundle:Main/Main:index }
+
+test:
+    path:      /test
+    defaults:  { _controller: AppBundle:Main/Test:index }

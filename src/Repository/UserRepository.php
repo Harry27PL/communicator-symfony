@@ -30,6 +30,12 @@ class UserRepository
         return $this->em->getRepository($this->entityName)->findOneByUsername($username);
     }
 
+    /** @return User[] */
+    public function getAll()
+    {
+        return $this->em->getRepository($this->entityName)->findAll();
+    }
+
     public function add($username, $email, $password)
     {
         $user = new User();
@@ -39,6 +45,7 @@ class UserRepository
         $user->setPassword(
             $this->encoder->getEncoder($user)->encodePassword($password, $user->getSalt())
         );
+        $user->setFayeToken(randomString(16));
 
         $this->em->persist($user);
         $this->em->flush();
