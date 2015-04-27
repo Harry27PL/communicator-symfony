@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="Calls")
  */
 class Call
 {
@@ -37,6 +38,13 @@ class Call
     //
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $connectionId;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -55,7 +63,7 @@ class Call
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +86,7 @@ class Call
     /**
      * Get calledAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCalledAt()
     {
@@ -101,7 +109,7 @@ class Call
     /**
      * Get endedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndedAt()
     {
@@ -124,7 +132,7 @@ class Call
     /**
      * Get channel
      *
-     * @return \Entity\Channel 
+     * @return \Entity\Channel
      */
     public function getChannel()
     {
@@ -147,7 +155,7 @@ class Call
     /**
      * Get caller
      *
-     * @return \Entity\User 
+     * @return \Entity\User
      */
     public function getCaller()
     {
@@ -170,10 +178,33 @@ class Call
     /**
      * Get receiver
      *
-     * @return \Entity\User 
+     * @return \Entity\User
      */
     public function getReceiver()
     {
         return $this->receiver;
+    }
+
+    /**
+     * Set connectionId
+     *
+     * @param string $connectionId
+     * @return Call
+     */
+    public function setConnectionId($connectionId)
+    {
+        $this->connectionId = $connectionId;
+
+        return $this;
+    }
+
+    /**
+     * Get connectionId
+     *
+     * @return string 
+     */
+    public function getConnectionId()
+    {
+        return $this->connectionId;
     }
 }

@@ -1,10 +1,4 @@
 body {
-    font-family: 'Lato';
-}
-
-.displayTable {
-    display: table;
-}
-.displayTable > * {
-    display: table-cell;
+    width: 1000px;
+    margin: 50px auto;
 }

@@ -20,11 +20,19 @@ class UserRepository
         $this->encoder = $encoder;
     }
 
+    /** @return User */
+    public function get($id)
+    {
+        return $this->em->getRepository($this->entityName)->find($id);
+    }
+
+    /** @return User */
     public function getByEmail($email)
     {
         return $this->em->getRepository($this->entityName)->findOneByEmail($email);
     }
 
+    /** @return User */
     public function getByUsername($username)
     {
         return $this->em->getRepository($this->entityName)->findOneByUsername($username);

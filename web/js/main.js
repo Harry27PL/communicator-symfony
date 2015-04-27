@@ -2,33 +2,15 @@
 
 $(document).ready(function () {
 
-    var client, clientAuth;
-    client = new Faye.Client('http://'+window.location.hostname+':8000/faye', {
-        timeout: 10
+    require.config({
+        baseUrl: 'js'
     });
 
-    var clientAuth = {
-        outgoing: function (message, callback) {
-            if (message.channel !== '/meta/subscribe')
-                return callback(message);
-
-            if (!message.ext)
-                message.ext = {};
-
-            message.ext.authToken = fayeConfig.token;
-
-            callback(message);
-        }
-    };
-
-    client.addExtension(clientAuth);
-
-    client.subscribe('/'+fayeConfig.id, function(data) {
-
-        alert(data.type)
-        alert(data.data)
+    requirejs(['FayeEvents', 'HTMLEvents'],
+    function (FayeEvents, HTMLEvents) {
 
     });
+
 
 });
 
@@ -49,3 +31,10 @@ function print_r(o) {
     }
     return f(o, '', '');
 }
+
+$(document).ajaxError(function(e, xhr, settings, exception) {
+    if (!$('.ajaxBlad').length)
+        $('html').prepend('<div class="ajaxBlad" style="background:#eee"></div>');
+
+    $('.ajaxBlad').append('<br><b>' + settings.url + '</b><br> ' + xhr.responseText);
+});

@@ -20,3 +20,17 @@ main:
 test:
     path:      /test
     defaults:  { _controller: AppBundle:Main/Test:index }
+
+##
+
+phoneConnectionOffer:
+    path:      /phone/connection/offer/{userId}
+    defaults:  { _controller: AppBundle:Phone/PhoneConnection:offer }
+
+phoneConnectionAnswer:
+    path:      /phone/connection/answer/{connectionId}
+    defaults:  { _controller: AppBundle:Phone/PhoneConnection:answer }
+
+phoneConnectionComplete:
+    path:      /phone/connection/complete/{connectionId}
+    defaults:  { _controller: AppBundle:Phone/PhoneConnection:complete }

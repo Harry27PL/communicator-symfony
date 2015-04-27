@@ -2,6 +2,14 @@
 
 {% block body %}
 
-    główna
+    {% set to = app.user.id == 14 ? 15 : 14 %}
+
+    <button class="call btn btn-primary" data-to="{{ to }}">
+        zadzwoń tam
+    </button>
+
+    <button class="answer btn btn-primary">
+        odbierz
+    </button>
 
 {% endblock %}

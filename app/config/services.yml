@@ -18,6 +18,30 @@ services:
 
     ##
 
+    call.repository:
+        class:      Repository\CallRepository
+        arguments:  [@em]
+
+    ##
+
+    phone.connection:
+        abstract:   true
+        arguments:  [@faye, @call.repository]
+
+    phone.connection.offer:
+        class:      Service\Phone\Connection\ConnectionOffer
+        parent:     phone.connection
+
+    phone.connection.answer:
+        class:      Service\Phone\Connection\ConnectionAnswer
+        parent:     phone.connection
+
+    phone.connection.complete:
+        class:      Service\Phone\Connection\ConnectionComplete
+        parent:     phone.connection
+
+    ##
+
     faye:
         class:      Service\Faye\Faye
         arguments:  [@user.repository]
