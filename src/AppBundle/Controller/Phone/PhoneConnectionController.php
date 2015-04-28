@@ -18,9 +18,9 @@ class PhoneConnectionController extends Controller
         $caller     = $this->getUser();
         $receiver   = $userRepo->get($userId);
 
-        $connectionOffer->offer($caller, $receiver, $_POST);
+        $call = $connectionOffer->offer($caller, $receiver, $_POST);
 
-        return new Response();
+        return new Response($call->getConnectionId());
     }
 
     public function answerAction($connectionId)
@@ -43,12 +43,20 @@ class PhoneConnectionController extends Controller
         $connectionComplete = $this->get('phone.connection.complete');
         /* @var $connectionComplete \Service\Phone\Connection\ConnectionComplete */
 
-        $callRepo = $this->get('call.repository');
-        /* @var $callRepo \Repository\CallRepository */
+        return new Response();
+    }
 
-        $call = $callRepo->getByConnectionId($connectionId);
+    public function ICECandidateAction($userId)
+    {
+        $connectionICECandidate = $this->get('phone.connection.ICECandidate');
+        /* @var $connectionICECandidate \Service\Phone\Connection\ConnectionICECandidate */
 
-        $connectionComplete->complete($call);
+        $userRepo = $this->get('user.repository');
+        /* @var $userRepo \Repository\UserRepository */
+
+        $sendTo = $userRepo->get($userId);
+
+        $connectionICECandidate->candidate($sendTo);
 
         return new Response();
     }

@@ -2,3 +2,7 @@ body {
     width: 1000px;
     margin: 50px auto;
 }
+
+video {
+    border-radius: 20px;
+}

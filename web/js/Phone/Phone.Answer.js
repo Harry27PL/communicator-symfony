@@ -2,34 +2,46 @@
 
 define(['./Phone'], function (Phone) {
 
-    var sdpConstraints = {
-        optional: [],
-        mandatory: {
-            OfferToReceiveAudio: true,
-            OfferToReceiveVideo: true
-        }
-    };
-
-    function answer(offerSDP, connectionId)
+    function sendAnswer(offerSDP, connectionId, callerId, mediaStream)
     {
+        var sdpConstraints = {
+            optional: [],
+            mandatory: {
+                OfferToReceiveAudio: true,
+                OfferToReceiveVideo: true
+            }
+        };
+
+        Phone.createPeer(mediaStream, callerId);
+
         var remoteSessionDescription = new RTCSessionDescription(offerSDP);
 
-        Phone.connection.setRemoteDescription(remoteSessionDescription);
+        peer.setRemoteDescription(remoteSessionDescription);
 
-        Phone.connection.createAnswer(function(answerSDP) {
+        peer.createAnswer(function(answerSDP) {
 
-            Phone.connection.setLocalDescription(answerSDP);
+            peer.setLocalDescription(answerSDP);
 
-            $.post('/phone/connection/answer/'+connectionId, answerSDP, function(d){
-                alert(d)
+            $.post('/phone/connection/answer/'+connectionId, answerSDP, function(){
+                console.log('answer');
             });
 
         }, function(){}, sdpConstraints);
     }
 
+    function answer(offerSDP, connectionId, callerId)
+    {
+        Phone.askForUserMedia(function(mediaStream){
+            sendAnswer(offerSDP, connectionId, callerId, mediaStream);
+        });
+    }
+
     var PhoneAnswer = {
-        answer: function(offerSDP, connectionId) {
-            answer(offerSDP, connectionId);
+        answer: function(offerSDP, connectionId, callerId) {
+
+            window.connectionId = connectionId;
+
+            answer(offerSDP, connectionId, callerId);
         }
     };
 

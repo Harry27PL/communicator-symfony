@@ -2,7 +2,7 @@
 
 define(['./Phone'], function (Phone) {
 
-    function offer(to)
+    function sendOffer(to, mediaStream)
     {
         var sdpConstraints = {
             optional: [],
@@ -12,21 +12,26 @@ define(['./Phone'], function (Phone) {
             }
         };
 
-        Phone.connection.createOffer(function(offerSDP)
-        {
-            Phone.connection.setLocalDescription(offerSDP);
+        Phone.createPeer(mediaStream, to);
 
-            $.post('/phone/connection/offer/'+to, offerSDP);
+        peer.createOffer(function(offerSDP)
+        {
+            peer.setLocalDescription(offerSDP);
+
+            $.post('/phone/connection/offer/'+to, offerSDP, function(data){
+                console.log('offer');
+                window.connectionId = data;
+            });
 
         }, function(){}, sdpConstraints);
-
     }
 
-    //
-
-    //var remoteSessionDescription = new RTCSessionDescription(answerSDP);
-    //connection.setRemoteDescription(remoteSessionDescription);
-
+    function offer(to)
+    {
+        Phone.askForUserMedia(function(mediaStream){
+            sendOffer(to, mediaStream);
+        });
+    }
 
     var PhoneOffer = {
         offer: function(to) {

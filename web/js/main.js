@@ -1,5 +1,8 @@
 'use strict';
 
+var peer,
+    connectionId;
+
 $(document).ready(function () {
 
     require.config({
@@ -11,10 +14,7 @@ $(document).ready(function () {
 
     });
 
-
 });
-
-
 
 function print_r(o) {
     function f(o, p, s) {

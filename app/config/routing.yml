@@ -34,3 +34,7 @@ phoneConnectionAnswer:
 phoneConnectionComplete:
     path:      /phone/connection/complete/{connectionId}
     defaults:  { _controller: AppBundle:Phone/PhoneConnection:complete }
+
+phoneConnectionICECandidate:
+    path:      /phone/connection/icecandidate/{userId}
+    defaults:  { _controller: AppBundle:Phone/PhoneConnection:ICECandidate }

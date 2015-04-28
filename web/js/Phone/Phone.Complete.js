@@ -6,15 +6,22 @@ define(['./Phone'], function (Phone) {
     {
         var remoteSessionDescription = new RTCSessionDescription(answerSDP);
 
-        Phone.connection.setRemoteDescription(remoteSessionDescription);
+        peer.setRemoteDescription(remoteSessionDescription, function(){
+            alert('tak')
+        }, function(error) {
+            alert(error)
+        });
 
-        $.post('/phone/connection/complete/'+connectionId, function(d){
-            alert(d);
+        $.post('/phone/connection/complete/'+connectionId, function(){
+            console.log('complete');
         });
     }
 
     var PhoneComplete = {
         complete: function(answerSDP, connectionId) {
+
+            window.connectionId = connectionId;
+
             complete(answerSDP, connectionId);
         }
     };

@@ -40,6 +40,10 @@ services:
         class:      Service\Phone\Connection\ConnectionComplete
         parent:     phone.connection
 
+    phone.connection.ICECandidate:
+        class:      Service\Phone\Connection\ConnectionICECandidate
+        parent:     phone.connection
+
     ##
 
     faye:

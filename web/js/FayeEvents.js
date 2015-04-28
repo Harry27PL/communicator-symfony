@@ -2,10 +2,12 @@
 
 define([
     'Phone/Phone.Answer',
-    'Phone/Phone.Complete'
+    'Phone/Phone.Complete',
+    'Phone/Phone.ICECandidate'
 ], function(
     PhoneAnswer,
-    PhoneComplete
+    PhoneComplete,
+    PhoneICECandidate
 ){
 
     var client, clientAuth;
@@ -31,11 +33,15 @@ define([
 
         switch (data.type) {
             case 'phone.connection.offer':
-                PhoneAnswer.answer(data.data.offerSDP, data.data.connectionId);
+                PhoneAnswer.answer(data.data.offerSDP, data.data.connectionId, data.data.callerId);
                 break;
 
             case 'phone.connection.answer':
                 PhoneComplete.complete(data.data.answerSDP, data.data.connectionId);
+                break;
+
+            case 'phone.connection.ICECandidate':
+                PhoneICECandidate.addCandidate(data.data.sdpMLineIndex, data.data.sdpMid, data.data.candidate);
                 break;
         }
 
