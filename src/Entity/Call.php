@@ -21,11 +21,6 @@ class Call
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Channel", inversedBy="calls")
-     */
-    protected $channel;
-
-    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="outgoingCalls")
      */
     protected $caller;
@@ -117,29 +112,6 @@ class Call
     }
 
     /**
-     * Set channel
-     *
-     * @param \Entity\Channel $channel
-     * @return Call
-     */
-    public function setChannel(\Entity\Channel $channel = null)
-    {
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Get channel
-     *
-     * @return \Entity\Channel
-     */
-    public function getChannel()
-    {
-        return $this->channel;
-    }
-
-    /**
      * Set caller
      *
      * @param \Entity\User $caller
@@ -201,7 +173,7 @@ class Call
     /**
      * Get connectionId
      *
-     * @return string 
+     * @return string
      */
     public function getConnectionId()
     {

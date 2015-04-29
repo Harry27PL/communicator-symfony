@@ -22,16 +22,6 @@ class User implements AdvancedUserInterface
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Channel", inversedBy="members")
-     */
-    protected $connectedChannels;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Channel", mappedBy="creator")
-     */
-    protected $createdChannels;
-
-    /**
      * @ORM\OneToMany(targetEntity="Message", mappedBy="sender")
      */
     protected $messagesSent;
@@ -88,20 +78,6 @@ class User implements AdvancedUserInterface
      */
     protected $removedAt;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $hasAvatar = false;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean")
-     */
-    protected $isAdmin = false;
-
 
     /**
      * @inheritDoc
@@ -132,9 +108,6 @@ class User implements AdvancedUserInterface
      */
     public function getRoles()
     {
-        if ($this->isAdmin)
-            return array('ROLE_ADMIN');
-
         return array('ROLE_USER');
     }
 
@@ -270,52 +243,6 @@ class User implements AdvancedUserInterface
     public function getRemovedAt()
     {
         return $this->removedAt;
-    }
-
-    /**
-     * Set hasAvatar
-     *
-     * @param boolean $hasAvatar
-     * @return User
-     */
-    public function setHasAvatar($hasAvatar)
-    {
-        $this->hasAvatar = $hasAvatar;
-
-        return $this;
-    }
-
-    /**
-     * Get hasAvatar
-     *
-     * @return boolean
-     */
-    public function getHasAvatar()
-    {
-        return $this->hasAvatar;
-    }
-
-    /**
-     * Set isAdmin
-     *
-     * @param boolean $isAdmin
-     * @return User
-     */
-    public function setIsAdmin($isAdmin)
-    {
-        $this->isAdmin = $isAdmin;
-
-        return $this;
-    }
-
-    /**
-     * Get isAdmin
-     *
-     * @return boolean
-     */
-    public function getIsAdmin()
-    {
-        return $this->isAdmin;
     }
 
     /**
@@ -532,7 +459,7 @@ class User implements AdvancedUserInterface
     /**
      * Get fayeToken
      *
-     * @return string 
+     * @return string
      */
     public function getFayeToken()
     {

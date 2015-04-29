@@ -19,11 +19,6 @@ class Message
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Channel", inversedBy="messages")
-     */
-    protected $channel;
-
-    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="messagesSent")
      */
     protected $sender;
@@ -32,7 +27,7 @@ class Message
      * @ORM\ManyToOne(targetEntity="User", inversedBy="messagesReceived")
      */
     protected $receiver;
-    
+
 
     //
 
@@ -61,7 +56,7 @@ class Message
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,7 +79,7 @@ class Message
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -107,34 +102,11 @@ class Message
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-    /**
-     * Set channel
-     *
-     * @param \Entity\Channel $channel
-     * @return Message
-     */
-    public function setChannel(\Entity\Channel $channel = null)
-    {
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Get channel
-     *
-     * @return \Entity\Channel 
-     */
-    public function getChannel()
-    {
-        return $this->channel;
     }
 
     /**
@@ -153,7 +125,7 @@ class Message
     /**
      * Get sender
      *
-     * @return \Entity\User 
+     * @return \Entity\User
      */
     public function getSender()
     {
@@ -176,7 +148,7 @@ class Message
     /**
      * Get receiver
      *
-     * @return \Entity\User 
+     * @return \Entity\User
      */
     public function getReceiver()
     {
