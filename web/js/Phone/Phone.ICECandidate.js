@@ -3,22 +3,23 @@
 define(['./Phone'],
 function (Phone) {
 
-    var candidates = [];
-
     function addCandidate(sdpMLineIndex, sdpMid, candidate)
     {
-        setTimeout(function(){
+        var interval = setInterval(function(){
 
-            //candidates.push();
+            try {
+                peer.addIceCandidate(new RTCIceCandidate({
+                    sdpMLineIndex:  sdpMLineIndex,
+                    candidate:      candidate
+                }));
 
-            peer.addIceCandidate(new RTCIceCandidate({
-                sdpMLineIndex:  sdpMLineIndex,
-                candidate:      candidate
-            }));
+                clearInterval(interval);
 
-            console.log('ice');
+            } catch (e) {}
 
-        }, 1000)
+        }, 100);
+
+        addICEIntervals.push(interval);
     }
 
     var PhoneICECandidate = {

@@ -1,7 +1,7 @@
 'use strict';
 
 var peer,
-    connectionId;
+    addICEIntervals = [];
 
 $(document).ready(function () {
 

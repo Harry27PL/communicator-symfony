@@ -38,9 +38,6 @@ define(['./Phone'], function (Phone) {
 
     var PhoneAnswer = {
         answer: function(offerSDP, connectionId, callerId) {
-
-            window.connectionId = connectionId;
-
             answer(offerSDP, connectionId, callerId);
         }
     };

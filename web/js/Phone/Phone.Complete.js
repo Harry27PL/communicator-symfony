@@ -7,9 +7,9 @@ define(['./Phone'], function (Phone) {
         var remoteSessionDescription = new RTCSessionDescription(answerSDP);
 
         peer.setRemoteDescription(remoteSessionDescription, function(){
-            alert('tak')
+
         }, function(error) {
-            alert(error)
+            console.log(error);
         });
 
         $.post('/phone/connection/complete/'+connectionId, function(){
@@ -19,8 +19,6 @@ define(['./Phone'], function (Phone) {
 
     var PhoneComplete = {
         complete: function(answerSDP, connectionId) {
-
-            window.connectionId = connectionId;
 
             complete(answerSDP, connectionId);
         }
