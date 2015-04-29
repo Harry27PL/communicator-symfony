@@ -53,13 +53,6 @@ class User implements AdvancedUserInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, unique=true)
-     */
-    protected $email;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=128)
      */
     protected $password;
@@ -155,8 +148,6 @@ class User implements AdvancedUserInterface
      */
     public function __construct()
     {
-        $this->connectedChannels = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdChannels = new \Doctrine\Common\Collections\ArrayCollection();
         $this->messagesSent = new \Doctrine\Common\Collections\ArrayCollection();
         $this->messagesReceived = new \Doctrine\Common\Collections\ArrayCollection();
         $this->outgoingCalls = new \Doctrine\Common\Collections\ArrayCollection();
@@ -184,29 +175,6 @@ class User implements AdvancedUserInterface
         $this->username = $username;
 
         return $this;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -243,72 +211,6 @@ class User implements AdvancedUserInterface
     public function getRemovedAt()
     {
         return $this->removedAt;
-    }
-
-    /**
-     * Add connectedChannels
-     *
-     * @param \Entity\Channel $connectedChannels
-     * @return User
-     */
-    public function addConnectedChannel(\Entity\Channel $connectedChannels)
-    {
-        $this->connectedChannels[] = $connectedChannels;
-
-        return $this;
-    }
-
-    /**
-     * Remove connectedChannels
-     *
-     * @param \Entity\Channel $connectedChannels
-     */
-    public function removeConnectedChannel(\Entity\Channel $connectedChannels)
-    {
-        $this->connectedChannels->removeElement($connectedChannels);
-    }
-
-    /**
-     * Get connectedChannels
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getConnectedChannels()
-    {
-        return $this->connectedChannels;
-    }
-
-    /**
-     * Add createdChannels
-     *
-     * @param \Entity\Channel $createdChannels
-     * @return User
-     */
-    public function addCreatedChannel(\Entity\Channel $createdChannels)
-    {
-        $this->createdChannels[] = $createdChannels;
-
-        return $this;
-    }
-
-    /**
-     * Remove createdChannels
-     *
-     * @param \Entity\Channel $createdChannels
-     */
-    public function removeCreatedChannel(\Entity\Channel $createdChannels)
-    {
-        $this->createdChannels->removeElement($createdChannels);
-    }
-
-    /**
-     * Get createdChannels
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCreatedChannels()
-    {
-        return $this->createdChannels;
     }
 
     /**
