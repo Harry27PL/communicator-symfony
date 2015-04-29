@@ -12,8 +12,8 @@ var PORT_CLIENT = 8000;
 var PORT_SYMFONY = 8001;
 
 var db = new function()  {
-    
-    var sf_config = yaml.safeLoad(fs.readFileSync('../../app/config/parameters.yml', 'utf8'));
+
+    var sf_config = yaml.safeLoad(fs.readFileSync('../app/config/parameters.yml', 'utf8'));
     var db_config = {
         host:     sf_config.parameters.database_host,
         user:     sf_config.parameters.database_user,
