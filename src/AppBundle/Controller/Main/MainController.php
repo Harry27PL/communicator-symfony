@@ -10,7 +10,9 @@ class MainController extends Controller
     public function indexAction()
     {
 
-        return $this->render('main/main.html.twig');
+        return $this->render('main/main.html.twig', [
+            'title' => 'Komunikator'
+        ]);
     }
 
 }

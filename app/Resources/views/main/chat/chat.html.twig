@@ -1,4 +1,4 @@
-{% extends '::main/main.html.twig' %}
+{% extends ajax is defined ? '::main/chat/blank.html.twig' : '::main/main.html.twig' %}
 
 {% block chat %}
 

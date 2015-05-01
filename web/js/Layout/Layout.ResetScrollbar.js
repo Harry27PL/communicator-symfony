@@ -1,6 +1,7 @@
 'use strict';
 
-define([], function (PhoneOffer) {
+define(['../App'],
+function (App) {
 
     function resetScrollbar(target)
     {

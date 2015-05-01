@@ -13,8 +13,8 @@ $(document).ready(function () {
         }
     });
 
-    requirejs(['FayeEvents', 'HTMLEvents'],
-    function (FayeEvents, HTMLEvents) {
+    requirejs(['AppEvents', 'FayeEvents', 'HTMLEvents', 'HistoryEvents'],
+    function (  AppEvents,   FayeEvents,   HTMLEvents,   HistoryEvents) {
 
 
     });

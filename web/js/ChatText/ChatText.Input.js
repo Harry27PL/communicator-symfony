@@ -1,6 +1,7 @@
 'use strict';
 
-define([], function () {
+define(['../App'],
+function (App) {
 
     function focus()
     {
