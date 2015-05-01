@@ -11,8 +11,6 @@ class CallRepository
     /** @var EntityManager */
     private $em;
 
-    private $encoder;
-
     private $entityName = 'Entity:Call';
 
     public function __construct(EntityManager $em)

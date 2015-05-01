@@ -22,7 +22,7 @@ define(['./Phone'], function (Phone) {
 
             peer.setLocalDescription(answerSDP);
 
-            $.post('/phone/connection/answer/'+connectionId, answerSDP, function(){
+            $.post('/chat/phone/connection/answer/'+connectionId, answerSDP, function(){
                 console.log('answer');
             });
 

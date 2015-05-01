@@ -17,28 +17,34 @@ main:
     path:      /
     defaults:  { _controller: AppBundle:Main/Main:index }
 
-chat:
-    path:      /chat/{username}
-    defaults:  { _controller: AppBundle:Main/Chat:index }
-
 test:
     path:      /test
     defaults:  { _controller: AppBundle:Main/Test:index }
 
 ##
 
-phoneConnectionOffer:
-    path:      /phone/connection/offer/{userId}
-    defaults:  { _controller: AppBundle:Phone/PhoneConnection:offer }
+chat:
+    path:      /chat/{username}
+    defaults:  { _controller: AppBundle:Main/Chat:index }
 
-phoneConnectionAnswer:
-    path:      /phone/connection/answer/{connectionId}
-    defaults:  { _controller: AppBundle:Phone/PhoneConnection:answer }
+chat.text.send:
+    path:      /chat/text/send/{userId}
+    defaults:  { _controller: AppBundle:Main/ChatText:send }
 
-phoneConnectionComplete:
-    path:      /phone/connection/complete/{connectionId}
-    defaults:  { _controller: AppBundle:Phone/PhoneConnection:complete }
+##
 
-phoneConnectionICECandidate:
-    path:      /phone/connection/icecandidate/{userId}
-    defaults:  { _controller: AppBundle:Phone/PhoneConnection:ICECandidate }
+chat.phone.connection.offer:
+    path:      /chat/phone/connection/offer/{userId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:offer }
+
+chat.phone.connection.answer:
+    path:      /chat/phone/connection/answer/{connectionId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:answer }
+
+chat.phone.connection.complete:
+    path:      /chat/phone/connection/complete/{connectionId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:complete }
+
+chat.phone.connection.ICECandidate:
+    path:      /chat/phone/connection/icecandidate/{userId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:ICECandidate }

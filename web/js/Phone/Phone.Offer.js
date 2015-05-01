@@ -18,7 +18,7 @@ define(['./Phone'], function (Phone) {
         {
             peer.setLocalDescription(offerSDP);
 
-            $.post('/phone/connection/offer/'+to, offerSDP, function(){
+            $.post('/chat/phone/connection/offer/'+to, offerSDP, function(){
                 console.log('offer');
             });
 

@@ -239,14 +239,27 @@ body {
 .chat-text-message.me + .me .chat-text-message-avatar img {
     display: none;
 }
+.chat-text-message.me + .me .chat-text-message-avatar time {
+    display: block;
+}
 .chat-text-message.me + .me .chat-text-message-container-header {
     display: none;
 }
 .chat-text-message.me + .me .chat-text-message-container-content {
     margin-top: 0px;
 }
-.chat-text-message.me + .me .chat-text-message-avatar time {
+
+.chat-text-message.interlocutor + .interlocutor .chat-text-message-avatar img {
+    display: none;
+}
+.chat-text-message.interlocutor + .interlocutor .chat-text-message-avatar time {
     display: block;
+}
+.chat-text-message.interlocutor + .interlocutor .chat-text-message-container-header {
+    display: none;
+}
+.chat-text-message.interlocutor + .interlocutor .chat-text-message-container-content {
+    margin-top: 0px;
 }
 
 /**/

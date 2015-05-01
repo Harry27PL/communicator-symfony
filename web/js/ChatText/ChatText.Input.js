@@ -8,8 +8,17 @@ function (App) {
         $('.chat-text-answer textarea').focus();
     }
 
+    function send()
+    {
+
+    }
+
     var ChatTextInput = {
-        handleReady: focus
+        handleReady: focus,
+
+        handleKeyup: function(e) {
+            
+        }
     };
 
     return ChatTextInput;

@@ -1,0 +1,21 @@
+<div class="chat-text-message {% if message.sender == app.user %}me{% else %}interlocutor{% endif %}">
+
+    <div class="chat-text-message-avatar">
+        {{ avatar(message.sender) }}
+        <time>{{ message.sentAt|date('H:i') }}</time>
+    </div>
+
+    <div class="chat-text-message-container">
+
+        <div class="chat-text-message-container-header">
+            <span>{{ message.sender.username }}</span>
+            <time>{{ message.sentAt|date('H:i') }}</time>
+        </div>
+
+        <div class="chat-text-message-container-content">
+            {{ autop(message.content) }}
+        </div>
+
+    </div>
+
+</div>

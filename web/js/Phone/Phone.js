@@ -42,7 +42,7 @@ define([], function () {
             if (!candidate)
                 return;
 
-            $.post('/phone/connection/icecandidate/'+otherUserId, candidate, function(d){
+            $.post('/chat/phone/connection/icecandidate/'+otherUserId, candidate, function(d){
                 //alert(d)
             });
         };

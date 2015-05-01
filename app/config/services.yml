@@ -22,27 +22,37 @@ services:
         class:      Repository\CallRepository
         arguments:  [@em]
 
+    message.repository:
+        class:      Repository\MessageRepository
+        arguments:  [@em]
+
     ##
 
-    phone.connection:
+    chat.text.send:
+        arguments:  []
+        class:      Service\Chat\Text\ChatTextSend
+
+    ##
+
+    chat.phone.connection:
         abstract:   true
         arguments:  [@faye, @call.repository]
 
-    phone.connection.offer:
-        class:      Service\Phone\Connection\ConnectionOffer
-        parent:     phone.connection
+    chat.phone.connection.offer:
+        class:      Service\Chat\Phone\Connection\ConnectionOffer
+        parent:     chat.phone.connection
 
-    phone.connection.answer:
-        class:      Service\Phone\Connection\ConnectionAnswer
-        parent:     phone.connection
+    chat.phone.connection.answer:
+        class:      Service\Chat\Phone\Connection\ConnectionAnswer
+        parent:     chat.phone.connection
 
-    phone.connection.complete:
-        class:      Service\Phone\Connection\ConnectionComplete
-        parent:     phone.connection
+    chat.phone.connection.complete:
+        class:      Service\Chat\Phone\Connection\ConnectionComplete
+        parent:     chat.phone.connection
 
-    phone.connection.ICECandidate:
-        class:      Service\Phone\Connection\ConnectionICECandidate
-        parent:     phone.connection
+    chat.phone.connection.ICECandidate:
+        class:      Service\Chat\Phone\Connection\ConnectionICECandidate
+        parent:     chat.phone.connection
 
     ##
 

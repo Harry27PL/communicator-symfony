@@ -1,19 +1,19 @@
 <?php
 
-namespace AppBundle\Controller\Phone;
+namespace AppBundle\Controller\Main;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class PhoneConnectionController extends Controller
+class ChatPhoneController extends Controller
 {
     public function offerAction($userId)
     {
         $userRepo = $this->get('user.repository');
         /* @var $userRepo \Repository\UserRepository */
 
-        $connectionOffer = $this->get('phone.connection.offer');
-        /* @var $connectionOffer \Service\Phone\Connection\ConnectionOffer */
+        $connectionOffer = $this->get('chat.phone.connection.offer');
+        /* @var $connectionOffer \Service\Chat\Phone\Connection\ConnectionOffer */
 
         $caller     = $this->getUser();
         $receiver   = $userRepo->get($userId);
@@ -25,8 +25,8 @@ class PhoneConnectionController extends Controller
 
     public function answerAction($connectionId)
     {
-        $connectionAnswer = $this->get('phone.connection.answer');
-        /* @var $connectionAnswer \Service\Phone\Connection\ConnectionAnswer */
+        $connectionAnswer = $this->get('chat.phone.connection.answer');
+        /* @var $connectionAnswer \Service\Chat\Phone\Connection\ConnectionAnswer */
 
         $callRepo = $this->get('call.repository');
         /* @var $callRepo \Repository\CallRepository */
@@ -40,16 +40,16 @@ class PhoneConnectionController extends Controller
 
     public function completeAction($connectionId)
     {
-        $connectionComplete = $this->get('phone.connection.complete');
-        /* @var $connectionComplete \Service\Phone\Connection\ConnectionComplete */
+        $connectionComplete = $this->get('chat.phone.connection.complete');
+        /* @var $connectionComplete \Service\Chat\Phone\Connection\ConnectionComplete */
 
         return new Response();
     }
 
     public function ICECandidateAction($userId)
     {
-        $connectionICECandidate = $this->get('phone.connection.ICECandidate');
-        /* @var $connectionICECandidate \Service\Phone\Connection\ConnectionICECandidate */
+        $connectionICECandidate = $this->get('chat.phone.connection.ICECandidate');
+        /* @var $connectionICECandidate \Service\Chat\Phone\Connection\ConnectionICECandidate */
 
         $userRepo = $this->get('user.repository');
         /* @var $userRepo \Repository\UserRepository */

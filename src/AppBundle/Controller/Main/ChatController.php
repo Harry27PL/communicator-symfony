@@ -13,7 +13,14 @@ class ChatController extends Controller
         $userRepo = $this->get('user.repository');
         /* @var $userRepo \Repository\UserRepository */
 
+        $messageRepo = $this->get('message.repository');
+        /* @var $messageRepo \Repository\MessageRepository */
+
         $interlocutor = $userRepo->getByUsername($username);
+
+        $user = $this->getUser();
+
+        $messages = $messageRepo->getAll($user, $interlocutor);
 
         $title = 'Rozmowa z '.$interlocutor->getUsername();
 
@@ -21,6 +28,7 @@ class ChatController extends Controller
             'chat'          => true,
             'interlocutor'  => $interlocutor,
             'title'         => $title,
+            'messages'      => $messages
         ];
 
         if (isAjax()) {

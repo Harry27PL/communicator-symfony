@@ -36,20 +36,20 @@ class Message
      *
      * @ORM\Column(type="text")
      */
-    protected $name;
+    protected $content;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $createdAt;
+    protected $sentAt;
 
     //
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->sentAt = new \DateTime();
     }
 
 
@@ -61,52 +61,6 @@ class Message
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Message
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return Message
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 
     /**
@@ -153,5 +107,51 @@ class Message
     public function getReceiver()
     {
         return $this->receiver;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Message
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set sentAt
+     *
+     * @param \DateTime $sentAt
+     * @return Message
+     */
+    public function setSentAt($sentAt)
+    {
+        $this->sentAt = $sentAt;
+
+        return $this;
+    }
+
+    /**
+     * Get sentAt
+     *
+     * @return \DateTime 
+     */
+    public function getSentAt()
+    {
+        return $this->sentAt;
     }
 }

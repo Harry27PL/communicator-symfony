@@ -1,6 +1,6 @@
 <?php
 
-namespace Service\Phone\Connection;
+namespace Service\Chat\Phone\Connection;
 
 use Entity\User;
 

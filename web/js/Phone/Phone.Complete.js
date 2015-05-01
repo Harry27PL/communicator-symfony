@@ -12,7 +12,7 @@ define(['./Phone'], function (Phone) {
             console.log(error);
         });
 
-        $.post('/phone/connection/complete/'+connectionId, function(){
+        $.post('/chat/phone/connection/complete/'+connectionId, function(){
             console.log('complete');
         });
     }

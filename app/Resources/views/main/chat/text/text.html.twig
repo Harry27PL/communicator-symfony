@@ -1,23 +1,8 @@
 <div class="chat-text-messages">
 
-{% for i in 1..3 %}
-    <div class="chat-text-message me">
-        <div class="chat-text-message-avatar">
-            {{ avatar(app.user) }}
-            <time>13:42</time>
-        </div>
-        <div class="chat-text-message-container">
-            <div class="chat-text-message-container-header">
-                <span>{{ app.user.username }}</span>
-                <time>13:42</time>
-            </div>
-            <div class="chat-text-message-container-content">
-                {{ autop('bla bla
-lorem ipsum dolor') }}
-            </div>
-        </div>
-    </div>
-{% endfor %}
+    {% for message in messages %}
+        {% include '::main/chat/text/message.html.twig' %}
+    {% endfor %}
 
 </div>
 
