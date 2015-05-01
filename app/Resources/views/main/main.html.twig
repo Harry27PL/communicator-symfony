@@ -1,8 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends '::main/base.html.twig' %}
 
 {% block body %}
 
-    {% set to = app.user.id == 14 ? 15 : 14 %}
+    <div class="layout">
+        <section class="layout-sidebar">
+            <div>
+                <div class="layout-sidebar-userPanel">
+                    {{ render(controller('AppBundle:Main/UserPanel:index')) }}
+                </div>
+                <ul class="layout-sidebar-contactList">
+                    {{ render(controller('AppBundle:Main/ContactList:index', {interlocutorId: interlocutor is defined ? interlocutor.id : 0})) }}
+                </ul>
+            </div>
+        </section>
+
+        <section class="layout-main">
+            <div class="layout-main-chat {% if interlocutor is not defined %}hidden{% endif %}">
+                {% block chat %}{% endblock %}
+            </div>
+            <div class="layout-main-bg">
+                <div>
+                    <div>
+                        <span class="fa fa-comments"></span>
+                        <div class="layout-main-bg-desc">
+                            Wybierz rozmówcę z listy kontaktów
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {#{% set to = app.user.id == 14 ? 15 : 14 %}
 
     <button class="call btn btn-primary" data-to="{{ to }}">
         zadzwoń tam
@@ -14,6 +43,6 @@
 
     <video width="300" height="200" autoplay="true">
 
-    </video>
+    </video>#}
 
 {% endblock %}

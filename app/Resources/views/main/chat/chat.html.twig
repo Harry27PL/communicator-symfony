@@ -1,0 +1,30 @@
+{% extends '::main/main.html.twig' %}
+
+{% block chat %}
+
+    <div class="chat-header">
+        <div class="chat-header-buttons">
+            <button class="btn btn-primary">
+                <span class="fa fa-phone"></span>
+                Zadzwoń
+            </button>
+        </div>
+        <div class="chat-header-user">
+            {{ avatar(interlocutor) }}
+            <h1>{{ interlocutor.username }}</h1>
+        </div>
+    </div>
+
+    <div class="chat">
+
+        <div class="chat-text">
+            {% include '::main/chat/text/text.html.twig' %}
+        </div>
+
+        <div class="chat-dialer hidden">
+            {% include '::main/chat/dialer/dialer.html.twig' %}
+        </div>
+
+    </div>
+
+{% endblock %}

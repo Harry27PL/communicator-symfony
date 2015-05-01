@@ -1,5 +1,6 @@
 body {
     font-family: 'Lato';
+    font-size: 15px;
 }
 
 .displayTable {
@@ -7,4 +8,66 @@ body {
 }
 .displayTable > * {
     display: table-cell;
+}
+
+.btn .fa {
+    margin-right: 5px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+.form-control:focus,
+.bootstrap-select .btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/**/
+
+.btn-primary {
+  color: #FFFFFF;
+  background-color: #6C71C4;
+  border-color: #6C71C4;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #FFFFFF;
+  background-color: #5c61b4;
+  border-color: #6C71C4;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #6C71C4;
+  border-color: #6C71C4;
+}
+
+.btn-primary .badge {
+  color: #6C71C4;
+  background-color: #FFFFFF;
 }

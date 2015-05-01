@@ -1,0 +1,14 @@
+{% for contact in contacts %}
+    <li class="{% if interlocutor == contact %}active{% endif %}">
+        <a href="{{ path('chat', {username: contact.username}) }}">
+            <span class="fa fa-circle"></span>
+            {{ contact.username }}
+        </a>
+    </li>
+{% endfor %}
+{#<li class="active online">
+    <a href="">
+        <span class="fa fa-circle"></span>
+        jakiśTyp
+    </a>
+</li>#}

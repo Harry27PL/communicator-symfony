@@ -27,6 +27,12 @@ class UserRepository
     }
 
     /** @return User */
+    public function getByEmail($email)
+    {
+        return $this->em->getRepository($this->entityName)->findOneByEmail($email);
+    }
+
+    /** @return User */
     public function getByUsername($username)
     {
         return $this->em->getRepository($this->entityName)->findOneByUsername($username);
@@ -38,11 +44,12 @@ class UserRepository
         return $this->em->getRepository($this->entityName)->findAll();
     }
 
-    public function add($username, $password)
+    public function add($username, $email, $password)
     {
         $user = new User();
 
         $user->setUsername($username);
+        $user->setEmail($email);
         $user->setPassword(
             $this->encoder->getEncoder($user)->encodePassword($password, $user->getSalt())
         );
@@ -52,5 +59,19 @@ class UserRepository
         $this->em->flush();
 
         return $user;
+    }
+
+    public function getAllWithout(User $user)
+    {
+        return $this->em->createQuery('
+            SELECT
+                u
+            FROM
+                '.$this->entityName.' u
+            WHERE
+                u <> :user
+            ')
+            ->setParameter('user', $user)
+            ->getResult();
     }
 }

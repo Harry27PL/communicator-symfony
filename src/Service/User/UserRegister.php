@@ -19,9 +19,9 @@ class UserRegister
         $this->logAs = $logAs;
     }
 
-    public function register($username, $password)
+    public function register($username, $email, $password)
     {
-        $user = $this->repo->add($username, $password);
+        $user = $this->repo->add($username, $email, $password);
 
         $this->logAs->logAs($user);
     }
@@ -30,16 +30,23 @@ class UserRegister
     {
         return [
             'username'  => '',
+            'email'     => '',
             'password'  => '',
         ];
     }
 
-    public function validate($username, $password)
+    public function validate($username, $email, $password)
     {
         $errors = $this->getDefaultValues();
         $values = $this->getDefaultValues();
 
         $values['username'] = $username;
+        $values['email']    = $email;
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+            $errors['email'] = 'user.validate.email.incorrect';
+        else if ($this->repo->getByEmail($email))
+            $errors['email'] = 'user.validate.email.exists';
 
         if (!$username)
             $errors['username'] = 'user.validate.username.incorrect';

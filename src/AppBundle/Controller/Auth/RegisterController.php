@@ -19,11 +19,11 @@ class RegisterController extends Controller
 
         if ($_POST) {
 
-            $formData = $userRegister->validate($_POST['username'], $_POST['password']);
+            $formData = $userRegister->validate($_POST['username'], $_POST['email'], $_POST['password']);
 
             if (!hasValue($formData['errors'])) {
 
-                $user = $userRegister->register($_POST['username'], $_POST['password']);
+                $user = $userRegister->register($_POST['username'], $_POST['email'], $_POST['password']);
 
                 return $this->redirect($this->generateUrl('main'));
             }

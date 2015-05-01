@@ -1,0 +1,9 @@
+<a href="{{ path('main') }}">{{ avatar(app.user) }}</a>
+
+<div>
+    <h1>{{ app.user.username }}</h1>
+
+    <a href="{{ path('logout') }}">
+        <span class="fa fa-sign-out"></span> Wyloguj
+    </a>
+</div>

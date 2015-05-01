@@ -62,3 +62,13 @@ services:
         class:        TwigExtensions\Form
         tags:
             -  { name: twig.extension }
+
+    avatar.twig.extension:
+        class:        TwigExtensions\Avatar
+        tags:
+            -  { name: twig.extension }
+
+    autop.twig.extension:
+        class:        TwigExtensions\Autop
+        tags:
+            -  { name: twig.extension }

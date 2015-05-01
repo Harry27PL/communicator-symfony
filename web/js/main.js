@@ -6,13 +6,21 @@ var peer,
 $(document).ready(function () {
 
     require.config({
-        baseUrl: 'js'
+        //perfectScrollbar: '/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js',
+        baseUrl: '/js',
+        paths: {
+            jquery: 'empty:'
+        }
     });
 
     requirejs(['FayeEvents', 'HTMLEvents'],
     function (FayeEvents, HTMLEvents) {
 
+
     });
+
+    //
+
 
 });
 

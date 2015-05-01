@@ -17,6 +17,10 @@ main:
     path:      /
     defaults:  { _controller: AppBundle:Main/Main:index }
 
+chat:
+    path:      /chat/{username}
+    defaults:  { _controller: AppBundle:Main/Chat:index }
+
 test:
     path:      /test
     defaults:  { _controller: AppBundle:Main/Test:index }
