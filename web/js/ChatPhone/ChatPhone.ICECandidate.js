@@ -1,7 +1,7 @@
 'use strict';
 
-define(['./Phone'],
-function (Phone) {
+define(['./ChatPhone'],
+function (ChatPhone) {
 
     function addCandidate(sdpMLineIndex, sdpMid, candidate)
     {
@@ -22,12 +22,12 @@ function (Phone) {
         addICEIntervals.push(interval);
     }
 
-    var PhoneICECandidate = {
+    var ChatPhoneICECandidate = {
         addCandidate: function(sdpMLineIndex, sdpMid, candidate) {
             addCandidate(sdpMLineIndex, sdpMid, candidate);
         }
     };
 
-    return PhoneICECandidate;
+    return ChatPhoneICECandidate;
 
 });

@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ChatPhoneController extends Controller
 {
-    public function offerAction($userId)
+    public function offerAction($userId, $video)
     {
         $userRepo = $this->get('user.repository');
         /* @var $userRepo \Repository\UserRepository */
@@ -18,7 +18,7 @@ class ChatPhoneController extends Controller
         $caller     = $this->getUser();
         $receiver   = $userRepo->get($userId);
 
-        $call = $connectionOffer->offer($caller, $receiver, $_POST);
+        $call = $connectionOffer->offer($caller, $receiver, $_POST, $video);
 
         return new Response($call->getConnectionId());
     }

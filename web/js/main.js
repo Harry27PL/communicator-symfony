@@ -1,12 +1,13 @@
 'use strict';
 
 var peer,
-    addICEIntervals = [];
+    addICEIntervals = [],
+    isCalling = false,
+    callVideo;
 
 $(document).ready(function () {
 
     require.config({
-        //perfectScrollbar: '/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js',
         baseUrl: '/js',
         paths: {
             jquery: 'empty:'
@@ -16,6 +17,7 @@ $(document).ready(function () {
     requirejs(['AppEvents', 'FayeEvents', 'HTMLEvents', 'HistoryEvents'],
     function (  AppEvents,   FayeEvents,   HTMLEvents,   HistoryEvents) {
 
+        $('.dialer-button-open').click()
 
     });
 

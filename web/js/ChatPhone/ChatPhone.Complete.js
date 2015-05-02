@@ -1,6 +1,7 @@
 'use strict';
 
-define(['./Phone'], function (Phone) {
+define(['./ChatPhone', './ChatPhone.Dialer'],
+function (ChatPhone,   ChatPhoneDialer) {
 
     function complete(answerSDP, connectionId)
     {
@@ -15,15 +16,17 @@ define(['./Phone'], function (Phone) {
         $.post('/chat/phone/connection/complete/'+connectionId, function(){
             console.log('complete');
         });
+
+        ChatPhoneDialer.startChat();
     }
 
-    var PhoneComplete = {
+    var ChatPhoneComplete = {
         complete: function(answerSDP, connectionId) {
 
             complete(answerSDP, connectionId);
         }
     };
 
-    return PhoneComplete;
+    return ChatPhoneComplete;
 
 });

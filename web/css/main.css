@@ -315,13 +315,25 @@ body {
     font-size: 22px;
 }
 
-.chat-dialer-buttons {
+.dialer-buttons {
     margin: 20px auto 0px;
     width: 180px;
 }
-.chat-dialer-buttons button {
+.dialer-buttons button {
     display: block;
     width: 180px;
     margin-bottom: 10px;
 }
 
+.dialer-button-hangUp span {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.dialer video {
+    display: none;
+    max-width: 100%;
+    max-height: 50%;
+    border-radius: 15px;
+}

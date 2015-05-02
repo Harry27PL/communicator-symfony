@@ -25,7 +25,7 @@ function (App,      ContactList) {
     {
         return $('[data-interlocutor]').attr('data-interlocutor');
     }
-
+    
     var Chat = {
         load: function(url) {
             load(url);

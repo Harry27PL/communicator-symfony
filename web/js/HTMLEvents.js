@@ -1,17 +1,17 @@
 'use strict';
 
 define([
-    'Control/Call.Button',
     'Layout/Layout.ResetScrollbar',
     'ChatText/ChatText.Input',
     'ChatText/ChatText.Messages',
+    'ChatPhone/ChatPhone.Dialer',
     'ContactList/ContactList'
 ],
 function (
-    CallButton,
     LayoutResetScrollbar,
     ChatTextInput,
     ChatTextMessages,
+    ChatPhoneDialer,
     ContactList
 ) {
 
@@ -19,10 +19,6 @@ function (
         LayoutResetScrollbar.handleReady();
         ChatTextInput.handleReady();
         ChatTextMessages.handleReady();
-    });
-
-    $(document).on('click', '.call', function(e){
-        CallButton.handleClick(e);
     });
 
     $(window).on('resize', function(){
@@ -42,6 +38,18 @@ function (
 
     $(document).on('keyup', '.chat-text-answer input', function(e){
         ChatTextInput.handleKeyup(e);
+    });
+
+    $(document).on('click', '.dialer-button-open', function(e){
+        ChatPhoneDialer.handleClickOpen();
+    });
+
+    $(document).on('click', '.dialer-button-voicechat', function(e){
+        ChatPhoneDialer.handleClickVoiceChat();
+    });
+
+    $(document).on('click', '.dialer-button-videochat', function(e){
+        ChatPhoneDialer.handleClickVideoChat();
     });
 
 });

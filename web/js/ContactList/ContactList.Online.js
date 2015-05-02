@@ -14,7 +14,7 @@ function (App,    ContactList) {
 
         logged[userId] = setTimeout(function(){
             ContactList.setOffline(userId);
-        }, 5000);
+        }, 10000);
     }
 
     setInterval(function(){

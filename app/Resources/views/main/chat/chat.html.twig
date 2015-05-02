@@ -4,7 +4,7 @@
 
     <div class="chat-header" data-interlocutor="{{ interlocutor.id }}">
         <div class="chat-header-buttons">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary dialer-button-open">
                 <span class="fa fa-phone"></span>
                 Zadzwoń
             </button>
@@ -21,7 +21,7 @@
             {% include '::main/chat/text/text.html.twig' %}
         </div>
 
-        <div class="chat-dialer hidden">
+        <div class="chat-dialer dialer hidden">
             {% include '::main/chat/dialer/dialer.html.twig' %}
         </div>
 

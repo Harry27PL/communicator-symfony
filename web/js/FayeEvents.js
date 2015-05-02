@@ -1,16 +1,16 @@
 'use strict';
 
 define([
-    'ChatPhone/Phone.Answer',
-    'ChatPhone/Phone.Complete',
-    'ChatPhone/Phone.ICECandidate',
+    'ChatPhone/ChatPhone.Answer',
+    'ChatPhone/ChatPhone.Complete',
+    'ChatPhone/ChatPhone.ICECandidate',
     'ChatText/ChatText.Messages',
     'ContactList/ContactList',
     'ContactList/ContactList.Online'
 ], function(
-    PhoneAnswer,
-    PhoneComplete,
-    PhoneICECandidate,
+    ChatPhoneAnswer,
+    ChatPhoneComplete,
+    ChatPhoneICECandidate,
     ChatTextMessages,
     ContactList,
     ContactListOnline
@@ -39,15 +39,15 @@ define([
 
         switch (data.type) {
             case 'phone.connection.offer':
-                PhoneAnswer.answer(data.data.offerSDP, data.data.connectionId, data.data.callerId);
+                ChatPhoneAnswer.answer(data.data.offerSDP, data.data.connectionId, data.data.callerId, data.data.video);
                 break;
 
             case 'phone.connection.answer':
-                PhoneComplete.complete(data.data.answerSDP, data.data.connectionId);
+                ChatPhoneComplete.complete(data.data.answerSDP, data.data.connectionId);
                 break;
 
             case 'phone.connection.ICECandidate':
-                PhoneICECandidate.addCandidate(data.data.sdpMLineIndex, data.data.sdpMid, data.data.candidate);
+                ChatPhoneICECandidate.addCandidate(data.data.sdpMLineIndex, data.data.sdpMid, data.data.candidate);
                 break;
 
             case 'chatText.message':

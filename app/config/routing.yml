@@ -44,9 +44,13 @@ chat.text.send:
 
 ##
 
-chat.phone.connection.offer:
-    path:      /chat/phone/connection/offer/{userId}
-    defaults:  { _controller: AppBundle:Main/ChatPhone:offer }
+chat.phone.connection.offer.audio:
+    path:      /chat/phone/connection/offer/audio/{userId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:offer, video: false }
+
+chat.phone.connection.offer.video:
+    path:      /chat/phone/connection/offer/video/{userId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:offer, video: true }
 
 chat.phone.connection.answer:
     path:      /chat/phone/connection/answer/{connectionId}

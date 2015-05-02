@@ -8,11 +8,31 @@ define([], function () {
         }]
     };
 
-    function askForUserMedia(callback)
+    function getSdpConstraints(video)
+    {
+        return video
+            ? {
+                optional: [],
+                mandatory: {
+                    OfferToReceiveAudio: true,
+                    OfferToReceiveVideo: true
+                }
+            }
+            : {
+                optional: [],
+                mandatory: {
+                    OfferToReceiveAudio: true,
+                    OfferToReceiveVideo: false
+                }
+            };
+    }
+
+
+    function askForUserMedia(callback, video)
     {
         var MediaConstraints = {
             audio: true,
-            video: true
+            video: video
         };
 
         getUserMedia(MediaConstraints, function(mediaStream) {
@@ -48,17 +68,16 @@ define([], function () {
         };
     }
 
-    var Phone = {
+    var ChatPhone = {
 
-        askForUserMedia: function(callback) {
-            askForUserMedia(callback);
-        },
+        askForUserMedia: askForUserMedia,
 
-        createPeer: function (mediaStream, otherUserId) {
-            createPeer(mediaStream, otherUserId);
-        }
+        createPeer: createPeer,
+
+        getSdpConstraints: getSdpConstraints
+
     };
 
-    return Phone;
+    return ChatPhone;
 
 });
