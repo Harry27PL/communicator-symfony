@@ -16,6 +16,10 @@ services:
         class:      Service\User\UserLogAs
         arguments:  [@session, @security.context]
 
+    user.maintainOnline:
+        class:      Service\User\UserMaintainOnline
+        arguments:  [@user.repository, @faye]
+
     ##
 
     call.repository:

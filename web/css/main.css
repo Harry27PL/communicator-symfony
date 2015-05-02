@@ -275,6 +275,11 @@ body {
     margin-top: 0px;
 }
 
+.chat-text-message.interlocutor + .me,
+.chat-text-message.me + .interlocutor {
+    margin-top: 7px;
+}
+
 /**/
 
 .chat-text-answer {

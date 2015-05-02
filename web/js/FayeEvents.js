@@ -4,12 +4,14 @@ define([
     'ChatPhone/Phone.Answer',
     'ChatPhone/Phone.Complete',
     'ChatPhone/Phone.ICECandidate',
-    'ChatText/ChatText.Messages'
+    'ChatText/ChatText.Messages',
+    'ContactList/ContactList.Online'
 ], function(
     PhoneAnswer,
     PhoneComplete,
     PhoneICECandidate,
-    ChatTextMessages
+    ChatTextMessages,
+    ContactListOnline
 ){
 
     var client, clientAuth;
@@ -48,6 +50,10 @@ define([
 
             case 'chatText.message':
                 ChatTextMessages.add(data.data.content, data.data.interlocutor);
+                break;
+
+            case 'online':
+                ContactListOnline.setOnline(data.data);
                 break;
         }
 

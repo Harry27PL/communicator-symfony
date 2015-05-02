@@ -13,8 +13,18 @@ function (App) {
 
     function setActive(userId)
     {
-        $('.layout-sidebar-contactList .active').removeClass('active');
-        $('.layout-sidebar-contactList [data-id='+userId+']').addClass('active');
+        $('.contact.active').removeClass('active');
+        $('.contact[data-id='+userId+']').addClass('active');
+    }
+
+    function setOnline(userId)
+    {
+        $('.contact[data-id='+userId+']').addClass('online');
+    }
+
+    function setOffline(userId)
+    {
+        $('.contact[data-id='+userId+']').removeClass('online');
     }
 
     function getContact(userId)
@@ -49,6 +59,8 @@ function (App) {
         },
 
         setActive:          setActive,
+        setOnline:          setOnline,
+        setOffline:         setOffline,
         setUnreadMessage:   setUnreadMessage,
         clearUnreadMessage: clearUnreadMessage,
         setCalling:         setCalling,

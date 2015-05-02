@@ -12,6 +12,7 @@ register:
     path:     /register
     defaults: {_controller: AppBundle:Auth/Register:index }
 
+##
 
 main:
     path:      /
@@ -20,6 +21,12 @@ main:
 test:
     path:      /test
     defaults:  { _controller: AppBundle:Main/Test:index }
+
+##
+
+maintainOnline:
+    path:      /maintainOnline
+    defaults:  { _controller: AppBundle:Main/MaintainOnline:index }
 
 ##
 
