@@ -9,8 +9,11 @@ class TestController extends Controller
 {
     public function indexAction()
     {
+        $user = $this->getUser();
+
         $faye = $this->get('faye');
-        $faye->sendToAll('call');
+
+        $faye->send($user, 'addUser');
 
         return new Response();
     }

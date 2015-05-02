@@ -10,7 +10,7 @@ services:
 
     user.register:
         class:      Service\User\UserRegister
-        arguments:  [@user.repository, @user.logAs]
+        arguments:  [@user.repository, @user.logAs, @faye, @twig]
 
     user.logAs:
         class:      Service\User\UserLogAs

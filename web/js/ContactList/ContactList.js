@@ -52,12 +52,20 @@ function (App) {
         getContact(userId).find('.contact-icons-call').addClass('hidden');
     }
 
+    function reload()
+    {
+        $.post('/contactList/'+$('[data-interlocutor]').attr('data-interlocutor'), function(data){
+            $('.layout-sidebar-contactList').html(data);
+        });
+    }
+
     var ContactList = {
         handleClick: function(e) {
             e.preventDefault();
             handleClick(e.target);
         },
 
+        reload:             reload,
         setActive:          setActive,
         setOnline:          setOnline,
         setOffline:         setOffline,

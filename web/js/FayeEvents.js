@@ -5,12 +5,14 @@ define([
     'ChatPhone/Phone.Complete',
     'ChatPhone/Phone.ICECandidate',
     'ChatText/ChatText.Messages',
+    'ContactList/ContactList',
     'ContactList/ContactList.Online'
 ], function(
     PhoneAnswer,
     PhoneComplete,
     PhoneICECandidate,
     ChatTextMessages,
+    ContactList,
     ContactListOnline
 ){
 
@@ -54,6 +56,10 @@ define([
 
             case 'online':
                 ContactListOnline.setOnline(data.data);
+                break;
+
+            case 'addUser':
+                ContactList.reload();
                 break;
         }
 

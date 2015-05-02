@@ -28,6 +28,10 @@ maintainOnline:
     path:      /maintainOnline
     defaults:  { _controller: AppBundle:Main/MaintainOnline:index }
 
+contactList:
+    path:      /contactList/{interlocutorId}
+    defaults:  { _controller: AppBundle:Main/ContactList:index, interlocutorId: 0 }
+
 ##
 
 chat:

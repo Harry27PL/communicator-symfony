@@ -4,19 +4,27 @@ namespace Service\User;
 
 use Entity\User;
 use Repository\UserRepository;
+use Service\Faye\Faye;
 
 class UserRegister
 {
+    /** @var Faye */
+    private $faye;
+
+    private $twig;
+
     /** @var UserLogAs */
     private $logAs;
 
     /** @var UserRepository */
     private $repo;
 
-    public function __construct(UserRepository $repo, UserLogAs $logAs)
+    public function __construct(UserRepository $repo, UserLogAs $logAs, Faye $faye, $twig)
     {
-        $this->repo = $repo;
+        $this->repo  = $repo;
         $this->logAs = $logAs;
+        $this->twig  = $twig;
+        $this->faye  = $faye;
     }
 
     public function register($username, $email, $password)
@@ -24,6 +32,8 @@ class UserRegister
         $user = $this->repo->add($username, $email, $password);
 
         $this->logAs->logAs($user);
+
+        $this->refreshContactList();
     }
 
     public function getDefaultValues()
@@ -60,5 +70,16 @@ class UserRegister
             'errors' => $errors,
             'values' => $values
         ];
+    }
+
+    private function refreshContactList()
+    {
+        $users = $this->repo->getAll();
+
+        foreach ($users as $user) {
+
+            $this->faye->send($user, 'addUser');
+
+        }
     }
 }
