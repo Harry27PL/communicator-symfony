@@ -32,6 +32,10 @@ services:
         arguments:  [@message.repository, @faye, @twig]
         class:      Service\Chat\Text\ChatTextSend
 
+    chat.text.setRead:
+        arguments:  [@message.repository, @faye, @twig]
+        class:      Service\Chat\Text\ChatTextSetRead
+
     ##
 
     chat.phone.connection:

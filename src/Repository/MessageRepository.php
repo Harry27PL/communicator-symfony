@@ -5,9 +5,12 @@ namespace Repository;
 use Entity\User;
 use Entity\Message;
 use Doctrine\ORM\EntityManager;
+use Traits\RepositoryTrait;
 
 class MessageRepository
 {
+    use RepositoryTrait;
+
     /** @var EntityManager */
     private $em;
 
@@ -51,6 +54,37 @@ class MessageRepository
         ->setParameter('user1', $user1)
         ->setParameter('user2', $user2)
         ->getResult()
+        ;
+    }
+
+    /** @return Message[] */
+    public function getUnread(User $sender)
+    {
+        return $this->em->createQuery('
+            SELECT
+                m
+            FROM
+                '.$this->entityName.' m
+            WHERE
+                m.sender = :user AND m.read = 0
+        ')
+        ->setParameter('user', $sender)
+        ->getResult()
+        ;
+    }
+
+    public function hasUnread(User $sender)
+    {
+        return $this->em->createQuery('
+            SELECT
+                COUNT(m)
+            FROM
+                '.$this->entityName.' m
+            WHERE
+                m.sender = :user AND m.read = 0
+        ')
+        ->setParameter('user', $sender)
+        ->getSingleScalarResult()
         ;
     }
 

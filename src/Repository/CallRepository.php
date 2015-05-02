@@ -5,9 +5,12 @@ namespace Repository;
 use Entity\User;
 use Entity\Call;
 use Doctrine\ORM\EntityManager;
+use Traits\RepositoryTrait;
 
 class CallRepository
 {
+    use RepositoryTrait;
+
     /** @var EntityManager */
     private $em;
 

@@ -45,6 +45,13 @@ class Message
      */
     protected $sentAt;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", name="`read`")
+     */
+    protected $read = false;
+
     //
 
     public function __construct()
@@ -148,10 +155,33 @@ class Message
     /**
      * Get sentAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getSentAt()
     {
         return $this->sentAt;
+    }
+
+    /**
+     * Set read
+     *
+     * @param boolean $read
+     * @return Message
+     */
+    public function setRead($read)
+    {
+        $this->read = $read;
+
+        return $this;
+    }
+
+    /**
+     * Get read
+     *
+     * @return boolean
+     */
+    public function getRead()
+    {
+        return $this->read;
     }
 }

@@ -4,45 +4,34 @@ namespace Service\Chat\Text;
 
 use Entity\User;
 use Entity\Message;
-use Service\Faye\Faye;
 use Repository\MessageRepository;
 
-class ChatTextSend
+class ChatTextSetRead
 {
-    private $twig;
-
-    /** @var Faye */
-    private $faye;
-
     /** @var MessageRepository */
     private $messageRepo;
 
-    public function __construct(MessageRepository $messageRepo, Faye $faye, $twig)
+    public function __construct(MessageRepository $messageRepo)
     {
         $this->messageRepo  = $messageRepo;
-        $this->twig         = $twig;
-        $this->faye         = $faye;
     }
 
-    public function send(User $sender, User $receiver, $content)
+    public function setRead(Message $message)
     {
-        $message = $this->messageRepo->add($sender, $receiver, $content);
+        $message->setRead(true);
 
-        $this->sendTo($sender, $receiver, $message);
-        $this->sendTo($receiver, $sender, $message);
+        $this->messageRepo->update();
     }
 
-    private function sendTo(User $user, User $interlocutor, Message $message)
+    public function setReadAll(User $interlocutor)
     {
-        $template = 'main/chat/text/message.html.twig';
+        $messages = $this->messageRepo->getUnread($interlocutor);
 
-        $this->faye->send($user, 'chatText.message', [
-            'interlocutor'  => $interlocutor->getId(),
-            'content'       => $this->twig->render($template, [
-                'message'   => $message,
-                'user'      => $user
-            ])
-        ]);
+        foreach ($messages as $message) {
+
+            $this->setRead($message);
+
+        }
     }
 
 }

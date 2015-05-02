@@ -10,15 +10,18 @@ class ChatController extends Controller
 {
     public function indexAction($username)
     {
-        $userRepo = $this->get('user.repository');
+        $userRepo        = $this->get('user.repository');
+        $messageRepo     = $this->get('message.repository');
+        $chatTextSetRead = $this->get('chat.text.setRead');
         /* @var $userRepo \Repository\UserRepository */
-
-        $messageRepo = $this->get('message.repository');
         /* @var $messageRepo \Repository\MessageRepository */
+        /* @var $chatTextSetRead \Service\Chat\Text\ChatTextSetRead */
 
         $interlocutor = $userRepo->getByUsername($username);
 
         $user = $this->getUser();
+
+        $chatTextSetRead->setReadAll($interlocutor);
 
         $messages = $messageRepo->getAll($user, $interlocutor);
 

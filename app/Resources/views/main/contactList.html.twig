@@ -6,7 +6,7 @@
 
             <div class="contact-icons">
                 <span class="hidden animated tada infinite contact-icons-call fa fa-phone"></span>
-                <span class="hidden animated tada infinite contact-icons-message fa fa-comment"></span>
+                <span class="{% if not unread[contact.id] %}hidden{% endif %} animated tada infinite contact-icons-message fa fa-comment"></span>
             </div>
 
             <span class="fa fa-circle" contact-status></span>

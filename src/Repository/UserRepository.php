@@ -4,9 +4,12 @@ namespace Repository;
 
 use Entity\User;
 use Doctrine\ORM\EntityManager;
+use Traits\RepositoryTrait;
 
 class UserRepository
 {
+    use RepositoryTrait;
+
     /** @var EntityManager */
     private $em;
 
