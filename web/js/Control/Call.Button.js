@@ -1,6 +1,6 @@
 'use strict';
 
-define(['../App', 'Phone/Phone.Offer'],
+define(['../App', 'ChatPhone/Phone.Offer'],
 function (App,     PhoneOffer) {
 
     function handleClick(target)

@@ -1,11 +1,11 @@
 <div class="chat-text-messages">
 
     {% for message in messages %}
-        {% include '::main/chat/text/message.html.twig' %}
+        {% include '::main/chat/text/message.html.twig' with {'user': app.user} %}
     {% endfor %}
 
 </div>
 
 <div class="chat-text-answer">
-    <textarea class="form-control" rows="1"></textarea>
+    <input class="form-control">
 </div>

@@ -17,15 +17,42 @@ function (App) {
         $('.layout-sidebar-contactList [data-id='+userId+']').addClass('active');
     }
 
+    function getContact(userId)
+    {
+        return $('.contact[data-id='+userId+']');
+    }
+
+    function setUnreadMessage(userId)
+    {
+        getContact(userId).find('.contact-icons-message').removeClass('hidden');
+    }
+
+    function clearUnreadMessage(userId)
+    {
+        getContact(userId).find('.contact-icons-message').addClass('hidden');
+    }
+
+    function setCalling(userId)
+    {
+        getContact(userId).find('.contact-icons-call').removeClass('hidden');
+    }
+
+    function clearCalling(userId)
+    {
+        getContact(userId).find('.contact-icons-call').addClass('hidden');
+    }
+
     var ContactList = {
         handleClick: function(e) {
             e.preventDefault();
             handleClick(e.target);
         },
 
-        setActive: function(userId) {
-            setActive(userId);
-        }
+        setActive:          setActive,
+        setUnreadMessage:   setUnreadMessage,
+        clearUnreadMessage: clearUnreadMessage,
+        setCalling:         setCalling,
+        clearCalling:       clearCalling
     };
 
     return ContactList;

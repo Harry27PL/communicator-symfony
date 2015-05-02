@@ -1,7 +1,7 @@
 'use strict';
 
-define(['../App'],
-function (App) {
+define(['../App', '../Chat/Chat', '../ContactList/ContactList'],
+function (App,    Chat,           ContactList) {
 
     function getEl()
     {
@@ -50,9 +50,27 @@ function (App) {
         scrollToEnd();
     }
 
+    function add(content, interlocutor)
+    {
+        if (Chat.getInterlocutorId() != interlocutor) {
+            ContactList.setUnreadMessage(interlocutor);
+            return;
+        }
+
+        getEl().find('.ps-scrollbar-x-rail').before(content);
+
+        scrollToEnd();
+    }
+
     var ChatTextMessages = {
         handleReady: resetOnReady,
-        handleResize: resetOnChange
+
+        handleResize: resetOnChange,
+
+        add: function(content, interlocutor)
+        {
+            add(content, interlocutor);
+        }
     };
 
     return ChatTextMessages;

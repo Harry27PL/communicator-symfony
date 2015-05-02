@@ -40,4 +40,8 @@ function (
         ContactList.handleClick(e);
     });
 
+    $(document).on('keyup', '.chat-text-answer input', function(e){
+        ChatTextInput.handleKeyup(e);
+    });
+
 });

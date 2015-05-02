@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Main\ChatText;
+namespace AppBundle\Controller\Main;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

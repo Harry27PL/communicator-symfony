@@ -1,13 +1,15 @@
 'use strict';
 
 define([
-    'Phone/Phone.Answer',
-    'Phone/Phone.Complete',
-    'Phone/Phone.ICECandidate'
+    'ChatPhone/Phone.Answer',
+    'ChatPhone/Phone.Complete',
+    'ChatPhone/Phone.ICECandidate',
+    'ChatText/ChatText.Messages'
 ], function(
     PhoneAnswer,
     PhoneComplete,
-    PhoneICECandidate
+    PhoneICECandidate,
+    ChatTextMessages
 ){
 
     var client, clientAuth;
@@ -42,6 +44,10 @@ define([
 
             case 'phone.connection.ICECandidate':
                 PhoneICECandidate.addCandidate(data.data.sdpMLineIndex, data.data.sdpMid, data.data.candidate);
+                break;
+
+            case 'chatText.message':
+                ChatTextMessages.add(data.data.content, data.data.interlocutor);
                 break;
         }
 

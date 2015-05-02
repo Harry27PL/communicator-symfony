@@ -64,40 +64,53 @@ body {
     margin: 0px;
     padding: 0px;
 }
-.layout-sidebar-contactList li {
+.contact {
     padding: 0px;
 }
-.layout-sidebar-contactList li a {
+.contact a {
     display: block;
     padding: 8px 10px 8px 15px;
     color: #839495;
 }
-.layout-sidebar-contactList li a:hover {
+.contact a:hover {
     text-decoration: none;
     background: #073642;
 }
 
-.layout-sidebar-contactList li a span {
+.contact .contact-status {
     margin: 0px 5px 0px 0px;
 }
-.layout-sidebar-contactList li.online a span {
+.contact.online .contact-status {
     color: #859900;
 }
 
-.layout-sidebar-contactList li.active a {
+.contact-icons {
+    float: right;
+}
+.contact-icons > * {
+    margin: 0px 3px;
+}
+.contact-icons-call {
+
+}
+.contact-icons-message {
+    position: relative;
+    top: -1px;
+}
+.contact:not(.active) .contact-icons {
+    color: #d33682;
+}
+
+.contact.active a {
     background: #ac8800;
     color: #002b36;
 }
-.layout-sidebar-contactList li.active a span {
+.contact.active .contact-status {
     color: #002b36;
 }
-.layout-sidebar-contactList li.active.online a span {
+.contact.active.online .contact-status {
     color: #fdf6e3;
 }
-
-/*.layout-sidebar-contactList li a:hover {
-    background: #073642;
-}*/
 
 /**/
 
@@ -228,7 +241,7 @@ body {
     display: none;
 }
 .chat-text-message:hover time {
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .chat-text-message-container-content {
@@ -268,12 +281,12 @@ body {
     padding: 15px 20px 20px;
     background: #eee7d4;
 }
-.chat-text-answer textarea {
+.chat-text-answer input {
     background: #fff;
     border: 1px solid #aea795;
     font-size: 16px;
 }
-.chat-text-answer textarea:focus {
+.chat-text-answer input:focus {
     border-color: #a39b81;
 }
 

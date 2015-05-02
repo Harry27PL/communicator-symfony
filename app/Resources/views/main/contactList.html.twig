@@ -1,14 +1,22 @@
 {% for contact in contacts %}
-    <li class="{% if interlocutor == contact %}active{% endif %}" data-id="{{ contact.id }}">
+
+    <li class="contact {% if interlocutor == contact %}active{% endif %}" data-id="{{ contact.id }}">
 
         <a href="{{ path('chat', {username: contact.username}) }}">
 
-            <span class="fa fa-circle"></span>
+            <div class="contact-icons">
+                <span class="hidden animated tada infinite contact-icons-call fa fa-phone"></span>
+                <span class="hidden animated tada infinite contact-icons-message fa fa-comment"></span>
+            </div>
+
+            <span class="fa fa-circle" contact-status></span>
+
             {{ contact.username }}
 
         </a>
 
     </li>
+
 {% endfor %}
 
 {#<li class="active online">

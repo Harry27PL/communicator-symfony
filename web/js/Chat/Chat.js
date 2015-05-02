@@ -7,9 +7,12 @@ function (App,      ContactList) {
     {
         $.post(url, function(d){
 
+            $('.layout-main-chat').removeClass('hidden');
+
             $('title').html(d.title);
 
             ContactList.setActive(d.userId);
+            ContactList.clearUnreadMessage(d.userId);
 
             $('.layout-main-chat').html(d.content);
 
@@ -18,10 +21,17 @@ function (App,      ContactList) {
         });
     }
 
+    function getInterlocutorId()
+    {
+        return $('[data-interlocutor]').attr('data-interlocutor');
+    }
+
     var Chat = {
         load: function(url) {
             load(url);
-        }
+        },
+
+        getInterlocutorId: getInterlocutorId
     };
 
     return Chat;
