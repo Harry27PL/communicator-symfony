@@ -1,7 +1,7 @@
 'use strict';
 
-define(['Chat/Chat',  './ChatPhone', './ChatPhone.Offer'],
-function (Chat,       ChatPhone,     ChatPhoneOffer) {
+define(['Chat/Chat',  './ChatPhone', './ChatPhone.SendOffer'],
+function (Chat,       ChatPhone,     ChatPhoneSendOffer) {
 
     function getEl()
     {
@@ -15,21 +15,46 @@ function (Chat,       ChatPhone,     ChatPhoneOffer) {
 
         var el = getEl();
 
-        if (el.is('.hidden')) {
-            el.removeClass('hidden');
-        } else {
-            el.addClass('hidden');
-        }
+        if (el.is('.hidden'))
+            open();
+        else
+            close();
+    }
+
+    function open()
+    {
+        getEl().removeClass('hidden');
+    }
+
+    function close()
+    {
+        getEl().addClass('hidden');
+    }
+
+    function setOffer()
+    {
+        open();
+        
+        $('.dialer-buttons').addClass('hidden');
+        $('.dialer-buttons-incoming').removeClass('hidden');
+    }
+
+    function handleChatChange()
+    {
+        if (offers[Chat.getInterlocutorId()])
+            toggle();
+
+        setOffer();
     }
 
     function startVideoChat()
     {
-        ChatPhoneOffer.offer(Chat.getInterlocutorId(), true);
+        ChatPhoneSendOffer.sendOffer(Chat.getInterlocutorId(), true);
     }
 
     function startVoiceChat()
     {
-        ChatPhoneOffer.offer(Chat.getInterlocutorId(), false);
+        ChatPhoneSendOffer.sendOffer(Chat.getInterlocutorId(), false);
     }
 
     function startChat()
@@ -50,7 +75,11 @@ function (Chat,       ChatPhone,     ChatPhoneOffer) {
         handleClickVideoChat: startVideoChat,
         handleClickVoiceChat: startVoiceChat,
 
-        startChat: startChat
+        startChat: startChat,
+
+        handleChatChange: handleChatChange,
+
+        setOffer: setOffer
 
     };
 

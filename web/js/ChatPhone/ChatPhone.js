@@ -68,13 +68,32 @@ define([], function () {
         };
     }
 
+    var ring = new Audio('/sounds/phone.mp3');
+    ring.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+
+    function startRing()
+    {
+        ring.play();
+    }
+
+    function stopRing()
+    {
+        ring.pause();
+    }
+
     var ChatPhone = {
 
         askForUserMedia: askForUserMedia,
 
         createPeer: createPeer,
 
-        getSdpConstraints: getSdpConstraints
+        getSdpConstraints: getSdpConstraints,
+
+        startRing: startRing,
+        stopRing:  stopRing
 
     };
 

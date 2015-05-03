@@ -3,7 +3,8 @@
 var peer,
     addICEIntervals = [],
     isCalling = false,
-    callVideo;
+    callVideo,
+    offers = [];
 
 $(document).ready(function () {
 
@@ -17,7 +18,7 @@ $(document).ready(function () {
     requirejs(['AppEvents', 'FayeEvents', 'HTMLEvents', 'HistoryEvents'],
     function (  AppEvents,   FayeEvents,   HTMLEvents,   HistoryEvents) {
 
-        $('.dialer-button-open').click()
+//        $('.dialer-button-open').click()
 
     });
 

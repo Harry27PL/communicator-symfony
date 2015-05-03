@@ -1,14 +1,14 @@
 'use strict';
 
 define([
-    'ChatPhone/ChatPhone.Answer',
+    'ChatPhone/ChatPhone.ReceiveOffer',
     'ChatPhone/ChatPhone.Complete',
     'ChatPhone/ChatPhone.ICECandidate',
     'ChatText/ChatText.Messages',
     'ContactList/ContactList',
     'ContactList/ContactList.Online'
 ], function(
-    ChatPhoneAnswer,
+    ChatPhoneReceiveOffer,
     ChatPhoneComplete,
     ChatPhoneICECandidate,
     ChatTextMessages,
@@ -39,7 +39,7 @@ define([
 
         switch (data.type) {
             case 'phone.connection.offer':
-                ChatPhoneAnswer.answer(data.data.offerSDP, data.data.connectionId, data.data.callerId, data.data.video);
+                ChatPhoneReceiveOffer.receiveOffer(data.data.offerSDP, data.data.connectionId, data.data.callerId, data.data.video);
                 break;
 
             case 'phone.connection.answer':
