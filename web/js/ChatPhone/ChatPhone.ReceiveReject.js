@@ -7,7 +7,7 @@ function (Chat,         ChatPhone,     ContactList,                  ChatPhoneDi
     {
         var interlocutor = Chat.getInterlocutorId();
 
-        delete offers[Chat.getInterlocutorId()];
+        delete offers[interlocutor];
 
         ContactList.clearCalling(interlocutor);
 

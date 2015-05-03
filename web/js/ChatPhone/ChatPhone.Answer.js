@@ -1,7 +1,7 @@
 'use strict';
 
-define(['./ChatPhone', './ChatPhone.Dialer'],
-function (ChatPhone,   ChatPhoneDialer) {
+define(['./ChatPhone', '../ContactList/ContactList'],
+function (ChatPhone,   ContactList) {
 
     function sendAnswer(offerSDP, connectionId, callerId, video, mediaStream, callback)
     {
@@ -18,6 +18,8 @@ function (ChatPhone,   ChatPhoneDialer) {
             $.post('/chat/phone/connection/answer/'+connectionId, answerSDP, function(){
                 console.log('answer');
             });
+
+            ContactList.clearCalling(callerId);
 
             callback();
 

@@ -1,10 +1,16 @@
 'use strict';
 
-define(['./ChatPhone', './ChatPhone.Dialer'],
-function (ChatPhone,   ChatPhoneDialer) {
+define(['../Chat/Chat', './ChatPhone', './ChatPhone.Dialer'],
+function (Chat,         ChatPhone,     ChatPhoneDialer) {
 
     function complete(answerSDP, connectionId)
     {
+        offers[Chat.getInterlocutorId()] = {
+            sdp:          answerSDP,
+            video:        callVideo,
+            connectionId: connectionId
+        };
+
         var remoteSessionDescription = new RTCSessionDescription(answerSDP);
 
         peer.setRemoteDescription(remoteSessionDescription, function(){

@@ -1,7 +1,7 @@
 'use strict';
 
-define(['../Chat/Chat',  './ChatPhone', './ChatPhone.Dialer', '../ContactList/ContactList'],
-function (Chat,          ChatPhone,   ChatPhoneDialer,      ContactList) {
+define(['../Chat/Chat', './ChatPhone', './ChatPhone.Dialer', '../ContactList/ContactList'],
+function (Chat,         ChatPhone,     ChatPhoneDialer,      ContactList) {
 
     function receiveOffer(offerSDP, connectionId, callerId, video)
     {

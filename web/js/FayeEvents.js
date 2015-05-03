@@ -4,6 +4,7 @@ define([
     'ChatPhone/ChatPhone.ReceiveOffer',
     'ChatPhone/ChatPhone.ReceiveReject',
     'ChatPhone/ChatPhone.Complete',
+    'ChatPhone/ChatPhone.ReceiveHangUp',
     'ChatPhone/ChatPhone.ICECandidate',
     'ChatText/ChatText.Messages',
     'ContactList/ContactList',
@@ -12,6 +13,7 @@ define([
     ChatPhoneReceiveOffer,
     ChatPhoneReceiveReject,
     ChatPhoneComplete,
+    ChatPhoneReceiveHangUp,
     ChatPhoneICECandidate,
     ChatTextMessages,
     ContactList,
@@ -54,6 +56,10 @@ define([
 
             case 'phone.ICECandidate':
                 ChatPhoneICECandidate.addCandidate(data.data.sdpMLineIndex, data.data.sdpMid, data.data.candidate);
+                break;
+
+            case 'phone.hangUp':
+                ChatPhoneReceiveHangUp.receiveHangUp();
                 break;
 
             case 'chatText.message':

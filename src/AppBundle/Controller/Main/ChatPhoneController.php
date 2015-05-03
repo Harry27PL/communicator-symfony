@@ -93,7 +93,9 @@ class ChatPhoneController extends Controller
 
         $call = $callRepo->getByConnectionId($connectionId);
 
-        $connectionHangUp->hangUp($call);
+        $user = $this->getUser();
+
+        $connectionHangUp->hangUp($call, $user);
 
         return new Response();
     }

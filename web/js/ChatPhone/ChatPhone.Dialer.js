@@ -5,6 +5,7 @@ define([
     './ChatPhone',
     './ChatPhone.SendOffer',
     './ChatPhone.SendReject',
+    './ChatPhone.SendHangUp',
     './ChatPhone.Answer'
 ],
 function (
@@ -12,6 +13,7 @@ function (
     ChatPhone,
     ChatPhoneSendOffer,
     ChatPhoneSendReject,
+    ChatPhoneSendHangup,
     ChatPhoneAnswer
 ) {
 
@@ -122,6 +124,18 @@ function (
         buttonsOutgoing();
     }
 
+    function sendHangUp()
+    {
+        ChatPhoneSendHangup.sendHangUp(Chat.getInterlocutorId());
+
+        endChat();
+    }
+
+    function receiveHangUp()
+    {
+        endChat();
+    }
+
     function startChat()
     {
         if (callVideo) {
@@ -134,7 +148,10 @@ function (
 
     function endChat()
     {
-        //buttonsOutgoing();
+        buttonsOutgoing();
+
+        $('video').hide();
+        $('.dialer-avatar img').show();
     }
 
     var ChatPhoneDialer = {
@@ -145,7 +162,7 @@ function (
         handleClickVoiceChat: startVoiceChat,
         handleClickAnswer:    answer,
         handleClickReject:    sendReject,
-        handleClickHangUp:    hangUp,
+        handleClickHangUp:    sendHangUp,
 
         startChat: startChat,
         endChat: endChat,
@@ -155,7 +172,7 @@ function (
         setOffer: setOffer,
 
         receiveReject: receiveReject,
-        hangUp: hangUp
+        receiveHangUp: receiveHangUp
 
     };
 
