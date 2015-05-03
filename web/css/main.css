@@ -79,6 +79,7 @@ body {
 
 .contact .contact-status {
     margin: 0px 5px 0px 0px;
+    color: #1a4049;
 }
 .contact.online .contact-status {
     color: #859900;

@@ -3,7 +3,7 @@
 define(['./ChatPhone', './ChatPhone.Dialer'],
 function (ChatPhone,   ChatPhoneDialer) {
 
-    function sendAnswer(offerSDP, connectionId, callerId, mediaStream, video)
+    function sendAnswer(offerSDP, connectionId, callerId, video, mediaStream, callback)
     {
         ChatPhone.createPeer(mediaStream, callerId);
 
@@ -19,18 +19,20 @@ function (ChatPhone,   ChatPhoneDialer) {
                 console.log('answer');
             });
 
-            ChatPhoneDialer.startChat();
+            callback();
 
         }, function(){}, ChatPhone.getSdpConstraints(video));
     }
 
-    function answer(offerSDP, connectionId, callerId, video)
+    function answer(interlocutorId, callback)
     {
-        callVideo = video;
+        var offer = offers[interlocutorId];
+
+        callVideo = offer.video;
 
         ChatPhone.askForUserMedia(function(mediaStream){
-            sendAnswer(offerSDP, connectionId, callerId, mediaStream, video);
-        }, video);
+            sendAnswer(offer.sdp, offer.connectionId, interlocutorId, offer.video, mediaStream, callback);
+        }, offer.video);
     }
 
     var ChatPhoneAnswer = {

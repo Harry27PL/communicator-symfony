@@ -52,4 +52,8 @@ function (
         ChatPhoneDialer.handleClickVideoChat();
     });
 
+    $(document).on('click', '.dialer-button-answer', function(e){
+        ChatPhoneDialer.handleClickAnswer();
+    });
+
 });
