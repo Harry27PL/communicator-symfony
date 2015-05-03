@@ -49,7 +49,6 @@ define([], function () {
 
         peer.addStream(mediaStream);
 
-
         peer.onaddstream = function(mediaStream) {
 
             console.log(URL.createObjectURL(mediaStream.stream));
@@ -99,6 +98,8 @@ define([], function () {
         isCalling = false;
 
         peer.close();
+
+        peer = null;
 
         callMediaStream.stop();
         callMediaStream.src = null;
