@@ -21,6 +21,8 @@ function (ChatPhone,   ContactList) {
 
             ContactList.clearCalling(callerId);
 
+            ChatPhone.start(video);
+
             callback();
 
         }, function(){}, ChatPhone.getSdpConstraints(video));

@@ -51,6 +51,13 @@ class Call
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
+    protected $answeredAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
     protected $endedAt;
 
 
@@ -178,5 +185,28 @@ class Call
     public function getConnectionId()
     {
         return $this->connectionId;
+    }
+
+    /**
+     * Set answeredAt
+     *
+     * @param \DateTime $answeredAt
+     * @return Call
+     */
+    public function setAnsweredAt($answeredAt)
+    {
+        $this->answeredAt = $answeredAt;
+
+        return $this;
+    }
+
+    /**
+     * Get answeredAt
+     *
+     * @return \DateTime
+     */
+    public function getAnsweredAt()
+    {
+        return $this->answeredAt;
     }
 }

@@ -5,8 +5,7 @@ function (ChatPhone) {
 
     function sendOffer(to, video)
     {
-        callVideo = video;
-        isCalling = true;
+        ChatPhone.start(video);
 
         ChatPhone.askForUserMedia(function(mediaStream){
 

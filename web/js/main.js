@@ -4,6 +4,7 @@ var peer,
     addICEIntervals = [],
     isCalling = false,
     callVideo,
+    callMediaStream,
     offers = [];
 
 $(document).ready(function () {

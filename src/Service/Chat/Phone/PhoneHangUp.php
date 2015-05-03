@@ -9,6 +9,10 @@ class PhoneHangUp extends Phone
 {
     public function hangUp(Call $call, User $by)
     {
+        $call->setEndedAt(new \DateTime());
+
+        $this->callRepo->update();
+
         $sendTo = $call->getReceiver() == $by
             ? $call->getCaller()
             : $call->getReceiver();

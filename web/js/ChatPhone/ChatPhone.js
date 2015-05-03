@@ -49,11 +49,14 @@ define([], function () {
 
         peer.addStream(mediaStream);
 
+
         peer.onaddstream = function(mediaStream) {
 
             console.log(URL.createObjectURL(mediaStream.stream));
 
             $('video').attr('src', URL.createObjectURL(mediaStream.stream));
+
+            callMediaStream = mediaStream.stream;
         };
 
         peer.onicecandidate = function(event)
@@ -84,6 +87,23 @@ define([], function () {
         ring.pause();
     }
 
+    function start(video)
+    {
+        isCalling = true;
+
+        callVideo = video;
+    }
+
+    function stop()
+    {
+        isCalling = false;
+
+        peer.close();
+
+        callMediaStream.stop();
+        callMediaStream.src = null;
+    }
+
     var ChatPhone = {
 
         askForUserMedia: askForUserMedia,
@@ -93,7 +113,10 @@ define([], function () {
         getSdpConstraints: getSdpConstraints,
 
         startRing: startRing,
-        stopRing:  stopRing
+        stopRing:  stopRing,
+
+        start: start,
+        stop:  stop
 
     };
 

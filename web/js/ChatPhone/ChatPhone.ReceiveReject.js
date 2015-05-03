@@ -12,6 +12,8 @@ function (Chat,         ChatPhone,     ContactList,                  ChatPhoneDi
         ContactList.clearCalling(interlocutor);
 
         ChatPhoneDialer.receiveReject();
+
+        ChatPhone.stop();
     }
 
     var ChatPhoneReceiveReject = {

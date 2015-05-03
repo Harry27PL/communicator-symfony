@@ -11,7 +11,7 @@ function (ChatPhone) {
             console.log('hang up');
         });
 
-        isCalling = false;
+        ChatPhone.stop();
     }
 
     var ChatPhoneSendHangUp = {

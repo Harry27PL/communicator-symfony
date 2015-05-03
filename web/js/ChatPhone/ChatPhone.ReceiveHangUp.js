@@ -11,7 +11,7 @@ function (Chat,         ChatPhone,     ChatPhoneDialer) {
 
         ChatPhoneDialer.receiveHangUp();
 
-        isCalling = false;
+        ChatPhone.stop();
     }
 
     var ChatPhoneReceiveHangUp = {
