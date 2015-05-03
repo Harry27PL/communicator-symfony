@@ -12,8 +12,8 @@ class ChatPhoneController extends Controller
         $userRepo = $this->get('user.repository');
         /* @var $userRepo \Repository\UserRepository */
 
-        $connectionOffer = $this->get('chat.phone.connection.offer');
-        /* @var $connectionOffer \Service\Chat\Phone\Connection\ConnectionOffer */
+        $connectionOffer = $this->get('chat.phone.offer');
+        /* @var $connectionOffer \Service\Chat\Phone\PhoneOffer */
 
         $caller     = $this->getUser();
         $receiver   = $userRepo->get($userId);
@@ -23,10 +23,25 @@ class ChatPhoneController extends Controller
         return new Response($call->getConnectionId());
     }
 
+    public function rejectAction($connectionId)
+    {
+        $connectionReject = $this->get('chat.phone.reject');
+        /* @var $connectionReject \Service\Chat\Phone\PhoneReject */
+
+        $callRepo = $this->get('call.repository');
+        /* @var $callRepo \Repository\CallRepository */
+
+        $call = $callRepo->getByConnectionId($connectionId);
+
+        $connectionReject->reject($call);
+
+        return new Response();
+    }
+
     public function answerAction($connectionId)
     {
-        $connectionAnswer = $this->get('chat.phone.connection.answer');
-        /* @var $connectionAnswer \Service\Chat\Phone\Connection\ConnectionAnswer */
+        $connectionAnswer = $this->get('chat.phone.answer');
+        /* @var $connectionAnswer \Service\Chat\Phone\PhoneAnswer */
 
         $callRepo = $this->get('call.repository');
         /* @var $callRepo \Repository\CallRepository */
@@ -40,16 +55,23 @@ class ChatPhoneController extends Controller
 
     public function completeAction($connectionId)
     {
-        $connectionComplete = $this->get('chat.phone.connection.complete');
-        /* @var $connectionComplete \Service\Chat\Phone\Connection\ConnectionComplete */
+        $connectionComplete = $this->get('chat.phone.complete');
+        /* @var $connectionComplete \Service\Chat\Phone\PhoneComplete */
+
+        $callRepo = $this->get('call.repository');
+        /* @var $callRepo \Repository\CallRepository */
+
+        $call = $callRepo->getByConnectionId($connectionId);
+
+        $connectionComplete->complete($call);
 
         return new Response();
     }
 
     public function ICECandidateAction($userId)
     {
-        $connectionICECandidate = $this->get('chat.phone.connection.ICECandidate');
-        /* @var $connectionICECandidate \Service\Chat\Phone\Connection\ConnectionICECandidate */
+        $connectionICECandidate = $this->get('chat.phone.ICECandidate');
+        /* @var $connectionICECandidate \Service\Chat\Phone\PhoneICECandidate */
 
         $userRepo = $this->get('user.repository');
         /* @var $userRepo \Repository\UserRepository */
@@ -57,6 +79,21 @@ class ChatPhoneController extends Controller
         $sendTo = $userRepo->get($userId);
 
         $connectionICECandidate->candidate($sendTo);
+
+        return new Response();
+    }
+
+    public function hangUpAction($connectionId)
+    {
+        $connectionHangUp = $this->get('chat.phone.hangUp');
+        /* @var $connectionHangUp \Service\Chat\Phone\PhoneHangUp */
+
+        $callRepo = $this->get('call.repository');
+        /* @var $callRepo \Repository\CallRepository */
+
+        $call = $callRepo->getByConnectionId($connectionId);
+
+        $connectionHangUp->hangUp($call);
 
         return new Response();
     }

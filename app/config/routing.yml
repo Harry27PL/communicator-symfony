@@ -56,6 +56,14 @@ chat.phone.connection.answer:
     path:      /chat/phone/connection/answer/{connectionId}
     defaults:  { _controller: AppBundle:Main/ChatPhone:answer }
 
+chat.phone.connection.reject:
+    path:      /chat/phone/connection/reject/{connectionId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:reject }
+
+chat.phone.connection.hangUp:
+    path:      /chat/phone/connection/hangUp/{connectionId}
+    defaults:  { _controller: AppBundle:Main/ChatPhone:hangUp }
+
 chat.phone.connection.complete:
     path:      /chat/phone/connection/complete/{connectionId}
     defaults:  { _controller: AppBundle:Main/ChatPhone:complete }

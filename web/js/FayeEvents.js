@@ -2,6 +2,7 @@
 
 define([
     'ChatPhone/ChatPhone.ReceiveOffer',
+    'ChatPhone/ChatPhone.ReceiveReject',
     'ChatPhone/ChatPhone.Complete',
     'ChatPhone/ChatPhone.ICECandidate',
     'ChatText/ChatText.Messages',
@@ -9,6 +10,7 @@ define([
     'ContactList/ContactList.Online'
 ], function(
     ChatPhoneReceiveOffer,
+    ChatPhoneReceiveReject,
     ChatPhoneComplete,
     ChatPhoneICECandidate,
     ChatTextMessages,
@@ -38,15 +40,19 @@ define([
     client.subscribe('/'+fayeConfig.id, function(data) {
 
         switch (data.type) {
-            case 'phone.connection.offer':
+            case 'phone.offer':
                 ChatPhoneReceiveOffer.receiveOffer(data.data.offerSDP, data.data.connectionId, data.data.callerId, data.data.video);
                 break;
 
-            case 'phone.connection.answer':
+            case 'phone.answer':
                 ChatPhoneComplete.complete(data.data.answerSDP, data.data.connectionId);
                 break;
 
-            case 'phone.connection.ICECandidate':
+            case 'phone.reject':
+                ChatPhoneReceiveReject.receiveReject();
+                break;
+
+            case 'phone.ICECandidate':
                 ChatPhoneICECandidate.addCandidate(data.data.sdpMLineIndex, data.data.sdpMid, data.data.candidate);
                 break;
 

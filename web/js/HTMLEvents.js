@@ -56,4 +56,12 @@ function (
         ChatPhoneDialer.handleClickAnswer();
     });
 
+    $(document).on('click', '.dialer-button-reject', function(e){
+        ChatPhoneDialer.handleClickReject();
+    });
+
+    $(document).on('click', '.dialer-button-hangUp', function(e){
+        ChatPhoneDialer.handleClickHangUp();
+    });
+
 });

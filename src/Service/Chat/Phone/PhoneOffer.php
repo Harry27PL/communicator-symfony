@@ -1,18 +1,18 @@
 <?php
 
-namespace Service\Chat\Phone\Connection;
+namespace Service\Chat\Phone;
 
 use Entity\User;
 use Entity\Call;
 
-class ConnectionOffer extends Connection
+class PhoneOffer extends Phone
 {
     /** @return Call */
     public function offer(User $caller, User $receiver, $offerSDP, $video)
     {
         $call = $this->callRepo->add($caller, $receiver);
 
-        $this->faye->send($receiver, 'phone.connection.offer', [
+        $this->faye->send($receiver, 'phone.offer', [
             'offerSDP'      => $offerSDP,
             'connectionId'  => $call->getConnectionId(),
             'callerId'      => $caller->getID(),

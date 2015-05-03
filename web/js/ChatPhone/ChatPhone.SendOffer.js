@@ -1,11 +1,12 @@
 'use strict';
 
-define(['./ChatPhone', '../ContactList/ContactList'],
-function (ChatPhone,   ContactList) {
+define(['./ChatPhone'],
+function (ChatPhone) {
 
     function sendOffer(to, video)
     {
         callVideo = video;
+        isCalling = true;
 
         ChatPhone.askForUserMedia(function(mediaStream){
 

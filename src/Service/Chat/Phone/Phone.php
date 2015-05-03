@@ -1,11 +1,11 @@
 <?php
 
-namespace Service\Chat\Phone\Connection;
+namespace Service\Chat\Phone;
 
 use Service\Faye\Faye;
 use Repository\CallRepository;
 
-abstract class Connection
+abstract class Phone
 {
     /** @var CallRepository */
     protected $callRepo;

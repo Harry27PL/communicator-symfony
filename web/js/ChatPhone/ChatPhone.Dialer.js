@@ -1,7 +1,19 @@
 'use strict';
 
-define(['Chat/Chat',  './ChatPhone', './ChatPhone.SendOffer', './ChatPhone.Answer'],
-function (Chat,       ChatPhone,     ChatPhoneSendOffer,      ChatPhoneAnswer) {
+define([
+    'Chat/Chat',
+    './ChatPhone',
+    './ChatPhone.SendOffer',
+    './ChatPhone.SendReject',
+    './ChatPhone.Answer'
+],
+function (
+    Chat,
+    ChatPhone,
+    ChatPhoneSendOffer,
+    ChatPhoneSendReject,
+    ChatPhoneAnswer
+) {
 
     function getEl()
     {
@@ -31,12 +43,34 @@ function (Chat,       ChatPhone,     ChatPhoneSendOffer,      ChatPhoneAnswer) {
         getEl().addClass('hidden');
     }
 
+    function buttonsOutgoing()
+    {
+        $('.dialer-buttons').addClass('hidden');
+        $('.dialer-buttons-outgoing').removeClass('hidden');
+    }
+
+    function buttonsLoading()
+    {
+        $('.dialer-buttons').addClass('hidden');
+    }
+
+    function buttonsIncoming()
+    {
+        $('.dialer-buttons').addClass('hidden');
+        $('.dialer-buttons-incoming').removeClass('hidden');
+    }
+
+    function buttonsCalling()
+    {
+        $('.dialer-buttons').addClass('hidden');
+        $('.dialer-buttons-calling').removeClass('hidden');
+    }
+
     function setOffer()
     {
         open();
 
-        $('.dialer-buttons').addClass('hidden');
-        $('.dialer-buttons-incoming').removeClass('hidden');
+        buttonsIncoming();
     }
 
     function handleChatChange()
@@ -52,11 +86,15 @@ function (Chat,       ChatPhone,     ChatPhoneSendOffer,      ChatPhoneAnswer) {
     function startVideoChat()
     {
         ChatPhoneSendOffer.sendOffer(Chat.getInterlocutorId(), true);
+
+        buttonsLoading();
     }
 
     function startVoiceChat()
     {
         ChatPhoneSendOffer.sendOffer(Chat.getInterlocutorId(), false);
+
+        buttonsLoading();
     }
 
     function answer()
@@ -68,6 +106,22 @@ function (Chat,       ChatPhone,     ChatPhoneSendOffer,      ChatPhoneAnswer) {
         });
     }
 
+    function sendReject()
+    {
+        ChatPhone.stopRing();
+
+        close();
+
+        buttonsOutgoing();
+
+        ChatPhoneSendReject.sendReject(Chat.getInterlocutorId());
+    }
+
+    function receiveReject()
+    {
+        buttonsOutgoing();
+    }
+
     function startChat()
     {
         if (callVideo) {
@@ -75,8 +129,12 @@ function (Chat,       ChatPhone,     ChatPhoneSendOffer,      ChatPhoneAnswer) {
             $('.dialer-avatar img').hide();
         }
 
-        $('.dialer-buttons').addClass('hidden');
-        $('.dialer-buttons-calling').removeClass('hidden');
+        buttonsCalling();
+    }
+
+    function endChat()
+    {
+        //buttonsOutgoing();
     }
 
     var ChatPhoneDialer = {
@@ -86,12 +144,18 @@ function (Chat,       ChatPhone,     ChatPhoneSendOffer,      ChatPhoneAnswer) {
         handleClickVideoChat: startVideoChat,
         handleClickVoiceChat: startVoiceChat,
         handleClickAnswer:    answer,
+        handleClickReject:    sendReject,
+        handleClickHangUp:    hangUp,
 
         startChat: startChat,
+        endChat: endChat,
 
         handleChatChange: handleChatChange,
 
-        setOffer: setOffer
+        setOffer: setOffer,
+
+        receiveReject: receiveReject,
+        hangUp: hangUp
 
     };
 

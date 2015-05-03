@@ -5,6 +5,9 @@ function (App) {
 
     function handleClick(el)
     {
+        if (isCalling)
+            return;
+
         History.pushState({
             randomData: window.Math.random(),
             type: 'chat'

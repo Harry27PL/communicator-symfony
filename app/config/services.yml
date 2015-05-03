@@ -42,25 +42,33 @@ services:
 
     ##
 
-    chat.phone.connection:
+    chat.phone:
         abstract:   true
         arguments:  [@faye, @call.repository]
 
-    chat.phone.connection.offer:
-        class:      Service\Chat\Phone\Connection\ConnectionOffer
-        parent:     chat.phone.connection
+    chat.phone.offer:
+        class:      Service\Chat\Phone\PhoneOffer
+        parent:     chat.phone
 
-    chat.phone.connection.answer:
-        class:      Service\Chat\Phone\Connection\ConnectionAnswer
-        parent:     chat.phone.connection
+    chat.phone.answer:
+        class:      Service\Chat\Phone\PhoneAnswer
+        parent:     chat.phone
 
-    chat.phone.connection.complete:
-        class:      Service\Chat\Phone\Connection\ConnectionComplete
-        parent:     chat.phone.connection
+    chat.phone.reject:
+        class:      Service\Chat\Phone\PhoneReject
+        parent:     chat.phone
 
-    chat.phone.connection.ICECandidate:
-        class:      Service\Chat\Phone\Connection\ConnectionICECandidate
-        parent:     chat.phone.connection
+    chat.phone.complete:
+        class:      Service\Chat\Phone\PhoneComplete
+        parent:     chat.phone
+
+    chat.phone.hangUp:
+        class:      Service\Chat\Phone\PhoneHangUp
+        parent:     chat.phone
+
+    chat.phone.ICECandidate:
+        class:      Service\Chat\Phone\PhoneICECandidate
+        parent:     chat.phone
 
     ##
 
