@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    background: #fdf6e3;
 }
 
 input,
@@ -27,15 +28,15 @@ h1, h2 {
 
 h1 {
     margin: 50px 0px 20px;
-    color: #4d394b;
+    color: #657b83;
 }
 h1 span {
     margin: 0px 0px 0px 5px;
-    color: #eb3b24;
+    color: #586e75;
 }
 
 h2 {
-    color: #4c9689;
+    color: #b58900;
 }
 
 .base {
