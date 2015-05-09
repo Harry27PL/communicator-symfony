@@ -9,23 +9,27 @@ function (ChatPhone,   ContactList) {
 
         var remoteSessionDescription = new RTCSessionDescription(offerSDP);
 
-        peer.setRemoteDescription(remoteSessionDescription);
+        peer.setRemoteDescription(remoteSessionDescription, function(){
 
-        peer.createAnswer(function(answerSDP) {
+            peer.createAnswer(function(answerSDP) {
 
-            peer.setLocalDescription(answerSDP);
+                peer.setLocalDescription(answerSDP);
 
-            $.post('/chat/phone/connection/answer/'+connectionId, answerSDP, function(){
-                console.log('answer');
-            });
+                $.post('/chat/phone/connection/answer/'+connectionId, {
+                    type: 'answer',
+                    sdp: answerSDP.sdp
+                });
 
-            ContactList.clearCalling(callerId);
+                ContactList.clearCalling(callerId);
 
-            ChatPhone.start(video);
+                ChatPhone.start(video);
 
-            callback();
+                callback();
 
-        }, function(){}, ChatPhone.getSdpConstraints(video));
+            }, function(){}, ChatPhone.getSdpConstraints(video));
+
+        });
+
     }
 
     function answer(interlocutorId, callback)

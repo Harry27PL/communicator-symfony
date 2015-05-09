@@ -64,8 +64,10 @@ define([], function () {
             if (!candidate)
                 return;
 
-            $.post('/chat/phone/connection/icecandidate/'+otherUserId, candidate, function(d){
-                //alert(d)
+            $.post('/chat/phone/connection/icecandidate/'+otherUserId, {
+                candidate: candidate.candidate,
+                sdpMid: candidate.sdpMid,
+                sdpMLineIndex: candidate.sdpMLineIndex
             });
         };
     }

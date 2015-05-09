@@ -15,8 +15,9 @@ function (ChatPhone) {
             {
                 peer.setLocalDescription(offerSDP);
 
-                $.post('/chat/phone/connection/offer/'+(video ? 'video' : 'audio')+'/'+to, offerSDP, function(){
-                    console.log('offer');
+                $.post('/chat/phone/connection/offer/'+(video ? 'video' : 'audio')+'/'+to, {
+                    type: 'offer',
+                    sdp: offerSDP.sdp
                 });
 
             }, function(){}, ChatPhone.getSdpConstraints(video));
