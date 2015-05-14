@@ -1,0 +1,15 @@
+{
+    "name": "communicator",
+    "dependencies": {
+        "jquery": "*",
+        "bootstrap": "*",
+        "adapterjs": "*",
+        "animate.css": "*",
+        "faye": "*",
+        "fontawesome": "*",
+        "history.js": "*",
+        "perfect-scrollbar": "*",
+        "requirejs": "*"
+    },
+    "private": true
+}
