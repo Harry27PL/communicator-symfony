@@ -19,12 +19,7 @@ $(document).ready(function () {
     requirejs(['AppEvents', 'FayeEvents', 'HTMLEvents', 'HistoryEvents'],
     function (  AppEvents,   FayeEvents,   HTMLEvents,   HistoryEvents) {
 
-//        $('.dialer-button-open').click()
-
     });
-
-    //
-
 
 });
 

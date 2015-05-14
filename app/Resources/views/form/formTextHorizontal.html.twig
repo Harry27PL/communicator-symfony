@@ -1,7 +1,0 @@
-<div class="form-group {{ class }} {% if error %}has-error{% endif %}">
-    <label for="{{ name }}" class="{{ classLeft }} control-label">{{ label }}</label>
-    <div class="{{ classRight }}">
-        <input type="text" class="form-control" id="{{ name }}" name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" {{ attributes|raw }}>
-        {% if error %}<p class="help-block">{{ error }}</p>{% endif %}
-    </div>
-</div>

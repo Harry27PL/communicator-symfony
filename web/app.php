@@ -4,7 +4,6 @@ use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
 include '../src/functions.php';
-include '../src/constants.php';
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 

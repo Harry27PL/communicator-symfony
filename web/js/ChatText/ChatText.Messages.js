@@ -67,10 +67,7 @@ function (App,    Chat,           ContactList) {
 
         handleResize: resetOnChange,
 
-        add: function(content, interlocutor)
-        {
-            add(content, interlocutor);
-        }
+        add: add
     };
 
     return ChatTextMessages;

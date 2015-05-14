@@ -1,11 +1,7 @@
 'use strict';
 
-define([
-    'Chat/Chat'
-],
-function (
-    Chat
-) {
+define(['Chat/Chat'],
+function (Chat) {
 
     History.Adapter.bind(window, 'statechange', function() {
 
@@ -17,5 +13,4 @@ function (
                 break;
         }
     });
-
 });
